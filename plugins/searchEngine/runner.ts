@@ -1,5 +1,3 @@
-import querystring from 'query-string';
-
 import { PluginRunner } from '../../types/pluginItem';
 import { OrganicResults, Result } from './type';
 
@@ -17,6 +15,8 @@ const fetchResult: PluginRunner<{ keywords: string }, Result> = async ({ keyword
     location: 'China',
     q: keywords,
   };
+
+  const { default: querystring } = await import('query-string');
 
   const query = querystring.stringify(params);
 
