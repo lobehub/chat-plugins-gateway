@@ -3,6 +3,8 @@ import { OpenAIPluginPayload } from '../../types/plugins';
 export const runtime = 'edge';
 
 export default async (req: Request) => {
+  if (req.method !== 'POST') return new Response('Method Not Allowed', { status: 405 });
+
   const { name, arguments: args } = (await req.json()) as OpenAIPluginPayload;
 
   console.log(`检测到 functionCall: ${name}`);
