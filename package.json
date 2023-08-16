@@ -1,9 +1,9 @@
 {
-  "name": "vercel-serverless-api-template",
+  "name": "lobe-chat-plugin-market",
   "version": "1.1.0",
   "private": true,
-  "description": "Vercel Serverless API 模板",
-  "repository": "https://github.com/arvinxx/vercel-serverless-api-template.git",
+  "description": "Lobe Chat Plugin Market",
+  "repository": "https://github.com/lobehub/chat-plugin-market.git",
   "scripts": {
     "ci": "npm run lint && npm run type-check",
     "lint": "npm run lint:js && npm run lint:prettier",
@@ -31,22 +31,16 @@
     "not ie <= 10"
   ],
   "devDependencies": {
-    "@umijs/lint": "^4",
+    "@lobehub/lint": "latest",
     "@vercel/node": "^2",
     "@vitest/coverage-v8": "latest",
-    "chalk": "^5",
     "commitlint": "^17",
-    "commitlint-config-gitmoji": "^2",
     "cross-env": "^7",
-    "dotenv": "^8",
     "eslint": "^8",
     "husky": "^8",
     "lint-staged": "^13",
     "prettier": "^2",
-    "prettier-plugin-organize-imports": "^3",
-    "prettier-plugin-packagejson": "^2",
     "semantic-release": "^21",
-    "semantic-release-config-gitmoji": "^1",
     "typescript": "^5",
     "vercel": "^31.2.3",
     "vitest": "latest"
