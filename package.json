@@ -30,6 +30,9 @@
     "last 2 versions",
     "not ie <= 10"
   ],
+  "dependencies": {
+    "query-string": "^8"
+  },
   "devDependencies": {
     "@lobehub/lint": "latest",
     "@vercel/node": "^2",

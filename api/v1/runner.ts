@@ -1,3 +1,4 @@
+import { PluginsMap } from '../../plugins';
 import { OpenAIPluginPayload } from '../../types/plugins';
 
 export const runtime = 'edge';
@@ -9,7 +10,7 @@ export default async (req: Request) => {
 
   console.log(`检测到 functionCall: ${name}`);
 
-  const func = { runner: (params: any) => params };
+  const func = PluginsMap[name];
 
   if (func) {
     const data = JSON.parse(args);
