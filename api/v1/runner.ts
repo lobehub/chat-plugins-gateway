@@ -17,4 +17,6 @@ export default async (req: Request) => {
 
     return new Response(JSON.stringify(result));
   }
+
+  return;
 };
