@@ -31,6 +31,7 @@
     "not ie <= 10"
   ],
   "dependencies": {
+    "@lobehub/lobe-chat-plugins": "^1.1.1",
     "query-string": "^8"
   },
   "devDependencies": {
