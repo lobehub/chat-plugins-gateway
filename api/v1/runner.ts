@@ -19,10 +19,9 @@ export default async (req: Request) => {
 
   console.log(`检测到 functionCall: ${name}`);
 
-  console.timeLog('请求 index');
   const res = await fetch(INDEX_URL);
   const manifest: LobeChatPlugins = await res.json();
-  console.timeEnd('请求 index');
+  console.log(manifest);
 
   const item = manifest.plugins.find((i) => i.name === name);
 
