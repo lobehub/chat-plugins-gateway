@@ -25,8 +25,8 @@ export default async (req: Request) => {
 
   const item = manifest.plugins.find((i) => i.name === name);
 
-  // 先通过插件资产路径查询
-  if (item) {
+  // 先通过插件资产 endpoint 路径查询
+  if (!!item?.runtime.endpoint) {
     const res = await fetch(item.runtime.endpoint, { body: args, method: 'post' });
     const data = await res.text();
     console.log(`[${name}]`, args, `result:`, data.slice(0, 3600));
