@@ -23,33 +23,17 @@ export default async (req: Request) => {
 
   if (!item) return;
 
-  // 兼容 V0 版本的代码
-  if ((manifest.version as number) === 0) {
-    // 先通过插件资产 endpoint 路径查询
-    const res = await fetch((item as any).runtime.endpoint, { body: args, method: 'post' });
-    const data = await res.text();
-    console.log(`[${name}]`, args, `result:`, data.slice(0, 3600));
-    return new Response(data);
-  }
+  if (!item.manifest) return;
 
-  // 新版 V1 的代码
-  else if (manifest.version === 1) {
-    // 先通过插件资产 endpoint 路径查询
+  // 获取插件的 manifest
+  const pluginRes = await fetch(item.manifest);
+  const chatPlugin = (await pluginRes.json()) as LobeChatPlugin;
 
-    if (!item.manifest) return;
+  const response = await fetch(chatPlugin.server.url, { body: args, method: 'post' });
 
-    // 获取插件的 manifest
-    const pluginRes = await fetch(item.manifest);
-    const chatPlugin = (await pluginRes.json()) as LobeChatPlugin;
+  const data = await response.text();
 
-    const response = await fetch(chatPlugin.server.url, { body: args, method: 'post' });
+  console.log(`[${name}]`, args, `result:`, data.slice(0, 3600));
 
-    const data = await response.text();
-
-    console.log(`[${name}]`, args, `result:`, data.slice(0, 3600));
-
-    return new Response(data);
-  }
-
-  return;
+  return new Response(data);
 };
