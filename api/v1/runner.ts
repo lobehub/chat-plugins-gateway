@@ -6,7 +6,7 @@ export const config = {
   runtime: 'edge',
 };
 
-const INDEX_URL = `https://registry.npmmirror.com/@lobehub/lobe-chat-plugins/~1.4/files`;
+const INDEX_URL = `https://registry.npmmirror.com/@lobehub/lobe-chat-plugins/latest/files`;
 
 export default async (req: Request) => {
   if (req.method !== 'POST') return new Response('Method Not Allowed', { status: 405 });
