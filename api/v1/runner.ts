@@ -13,11 +13,11 @@ export default async (req: Request) => {
 
   const indexRes = await fetch(INDEX_URL);
   const manifest: LobeChatPluginsMarketIndex = await indexRes.json();
-  console.log('manifest:', manifest);
+  console.info('manifest:', manifest);
 
   const { name, arguments: args } = (await req.json()) as OpenAIPluginPayload;
 
-  console.log(`检测到 functionCall: ${name}`);
+  console.info(`plugin call: ${name}`);
 
   const item = manifest.plugins.find((i) => i.name === name);
 
@@ -28,6 +28,7 @@ export default async (req: Request) => {
   // 获取插件的 manifest
   const pluginRes = await fetch(item.manifest);
   const chatPlugin = (await pluginRes.json()) as LobeChatPlugin;
+  console.log(`[${name}] plugin manifest:`, chatPlugin);
 
   const response = await fetch(chatPlugin.server.url, { body: args, method: 'post' });
 
