@@ -154,7 +154,7 @@ export default async (req: Request) => {
 
   const data = await response.text();
 
-  console.log(`[${name}]`, args, `result:`, data.slice(0, 3600));
+  console.log(`[${name}]`, args, `result:`, data.slice(0, 1000));
 
   return new Response(data);
 };
