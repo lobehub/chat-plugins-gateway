@@ -1,55 +1,160 @@
-import { LobeChatPlugin, LobeChatPluginsMarketIndex } from '@lobehub/chat-plugin-sdk';
+// reason to use cfworker json schema:
+// https://github.com/vercel/next.js/discussions/47063#discussioncomment-5303951
+import { Validator } from '@cfworker/json-schema';
+import {
+  ErrorType,
+  LobeChatPlugin,
+  LobeChatPluginsMarketIndex,
+  createErrorResponse,
+  marketIndexSchema,
+  pluginManifestSchema,
+  pluginMetaSchema,
+} from '@lobehub/chat-plugin-sdk';
 
-import { OpenAIPluginPayload } from '../../types/plugins';
+import { PluginPayload, payloadSchema } from './_validator';
 
 export const config = {
   runtime: 'edge',
 };
 
-const INDEX_URL = `https://registry.npmmirror.com/@lobehub/lobe-chat-plugins/~1.4/files`;
+const INDEX_URL = `https://registry.npmmirror.com/@lobehub/lobe-chat-plugins/latest/files`;
 
 export default async (req: Request) => {
-  if (req.method !== 'POST') return new Response('Method Not Allowed', { status: 405 });
+  // ==========  1. 校验请求方法 ========== //
+  if (req.method !== 'POST')
+    return createErrorResponse(ErrorType.MethodNotAllowed, {
+      message: '[gateway] only allow POST method',
+    });
 
-  const indexRes = await fetch(INDEX_URL);
-  const manifest: LobeChatPluginsMarketIndex = await indexRes.json();
-  console.log('manifest:', manifest);
+  // ==========  2. 校验请求入参基础格式 ========== //
+  const requestPayload = (await req.json()) as PluginPayload;
 
-  const { name, arguments: args } = (await req.json()) as OpenAIPluginPayload;
+  const payloadParseResult = payloadSchema.safeParse(requestPayload);
 
-  console.log(`检测到 functionCall: ${name}`);
+  if (!payloadParseResult.success)
+    return createErrorResponse(ErrorType.BadRequest, payloadParseResult.error);
 
-  const item = manifest.plugins.find((i) => i.name === name);
+  const { name, arguments: args } = requestPayload;
 
-  if (!item) return;
+  console.info(`plugin call: ${name}`);
 
-  // 兼容 V0 版本的代码
-  if ((manifest.version as number) === 0) {
-    // 先通过插件资产 endpoint 路径查询
-    const res = await fetch((item as any).runtime.endpoint, { body: args, method: 'post' });
-    const data = await res.text();
-    console.log(`[${name}]`, args, `result:`, data.slice(0, 3600));
-    return new Response(data);
+  // ==========  3. 获取插件市场索引 ========== //
+
+  let marketIndex: LobeChatPluginsMarketIndex | undefined;
+  try {
+    const indexRes = await fetch(INDEX_URL);
+    marketIndex = await indexRes.json();
+  } catch (error) {
+    console.error(error);
+    marketIndex = undefined;
   }
 
-  // 新版 V1 的代码
-  else if (manifest.version === 1) {
-    // 先通过插件资产 endpoint 路径查询
+  // 插件市场索引不存在
+  if (!marketIndex)
+    return createErrorResponse(ErrorType.PluginMarketIndexNotFound, {
+      indexUrl: INDEX_URL,
+      message: '[gateway] plugin market index not found',
+    });
 
-    if (!item.manifest) return;
+  // 插件市场索引解析失败
+  const indexParseResult = marketIndexSchema.safeParse(marketIndex);
 
-    // 获取插件的 manifest
-    const pluginRes = await fetch(item.manifest);
-    const chatPlugin = (await pluginRes.json()) as LobeChatPlugin;
+  if (!indexParseResult.success)
+    return createErrorResponse(ErrorType.PluginMarketIndexInvalid, {
+      error: indexParseResult.error,
+      indexUrl: INDEX_URL,
+      marketIndex,
+      message: '[gateway] plugin market index is invalid',
+    });
 
-    const response = await fetch(chatPlugin.server.url, { body: args, method: 'post' });
+  console.info('marketIndex:', marketIndex);
 
-    const data = await response.text();
+  // ==========  4. 校验插件 meta 完备性 ========== //
 
-    console.log(`[${name}]`, args, `result:`, data.slice(0, 3600));
+  const pluginMeta = marketIndex.plugins.find((i) => i.name === name);
 
-    return new Response(data);
+  // 一个不规范的插件示例
+  // const pluginMeta = {
+  //   createAt: '2023-08-12',
+  //   homepage: 'https://github.com/lobehub/chat-plugin-real-time-weather',
+  //   manifest: 'https://registry.npmmirror.com/@lobehub/lobe-chat-plugins/latest/files',
+  //   meta: {
+  //     avatar: '☂️',
+  //     tags: ['weather', 'realtime'],
+  //   },
+  //   name: 'realtimeWeather',
+  //   schemaVersion: 'v1',
+  // };
+
+  // 校验插件是否存在
+  if (!pluginMeta)
+    return createErrorResponse(ErrorType.PluginMetaNotFound, {
+      message: `[gateway] plugin '${name}' is not found，please check the plugin list in ${INDEX_URL}, or create an issue to [lobe-chat-plugins](https://github.com/lobehub/lobe-chat-plugins/issues)`,
+      name,
+    });
+
+  const metaParseResult = pluginMetaSchema.safeParse(pluginMeta);
+
+  if (!metaParseResult.success)
+    return createErrorResponse(ErrorType.PluginMetaInvalid, {
+      error: metaParseResult.error,
+      message: '[plugin] plugin meta is invalid',
+      pluginMeta,
+    });
+
+  // ==========  5. 校验插件 manifest 完备性 ========== //
+
+  // 获取插件的 manifest
+  let manifest: LobeChatPlugin | undefined;
+  try {
+    const pluginRes = await fetch(pluginMeta.manifest);
+    manifest = (await pluginRes.json()) as LobeChatPlugin;
+  } catch (error) {
+    console.error(error);
+    manifest = undefined;
   }
 
-  return;
+  if (!manifest)
+    return createErrorResponse(ErrorType.PluginManifestNotFound, {
+      manifestUrl: pluginMeta.manifest,
+      message: '[plugin] plugin manifest not found',
+    });
+
+  const manifestParseResult = pluginManifestSchema.safeParse(manifest);
+
+  if (!manifestParseResult.success)
+    return createErrorResponse(ErrorType.PluginManifestInvalid, {
+      error: manifestParseResult.error,
+      manifest: manifest,
+      message: '[plugin] plugin manifest is invalid',
+    });
+
+  console.log(`[${name}] plugin manifest:`, manifest);
+
+  // ==========  6. 校验请求入参与 manifest 要求一致性 ========== //
+
+  if (args) {
+    const v = new Validator(manifest.schema.parameters as any);
+    const validator = v.validate(JSON.parse(args!));
+
+    if (!validator.valid)
+      return createErrorResponse(ErrorType.BadRequest, {
+        error: validator.errors,
+        manifest,
+        message: '[plugin] args is invalid with plugin manifest schema',
+      });
+  }
+
+  // ==========  7. 发送请求 ========== //
+
+  const response = await fetch(manifest.server.url, { body: args, method: 'post' });
+
+  // 不正常的错误，直接返回请求
+  if (!response.ok) return response;
+
+  const data = await response.text();
+
+  console.log(`[${name}]`, args, `result:`, data.slice(0, 3600));
+
+  return new Response(data);
 };
