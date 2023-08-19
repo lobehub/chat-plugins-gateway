@@ -31,8 +31,8 @@
     "not ie <= 10"
   ],
   "dependencies": {
+    "@cfworker/json-schema": "^1",
     "@lobehub/chat-plugin-sdk": "latest",
-    "jsonschema": "^1.4.1",
     "zod": "^3"
   },
   "devDependencies": {

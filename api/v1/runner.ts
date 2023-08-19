@@ -1,3 +1,6 @@
+// reason to use cfworker json schema:
+// https://github.com/vercel/next.js/discussions/47063#discussioncomment-5303951
+import { Validator } from '@cfworker/json-schema';
 import {
   ErrorType,
   LobeChatPlugin,
@@ -7,7 +10,6 @@ import {
   pluginManifestSchema,
   pluginMetaSchema,
 } from '@lobehub/chat-plugin-sdk';
-import { Validator } from 'jsonschema';
 
 import { PluginPayload, payloadSchema } from './_validator';
 
@@ -130,15 +132,14 @@ export default async (req: Request) => {
   console.log(`[${name}] plugin manifest:`, manifest);
 
   // ==========  6. 校验请求入参与 manifest 要求一致性 ========== //
-  const v = new Validator();
 
   if (args) {
-    const validator = v.validate(JSON.parse(args!), manifest.schema.parameters as any);
+    const v = new Validator(manifest.schema.parameters as any);
+    const validator = v.validate(JSON.parse(args!));
 
     if (!validator.valid)
       return createErrorResponse(ErrorType.BadRequest, {
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        error: validator.errors.map(({ schema: _, ...res }) => res),
+        error: validator.errors,
         manifest,
         message: '[plugin] args is invalid with plugin manifest schema',
       });
