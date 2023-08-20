@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version&nbsp;1.1.0](https://github.com/lobehub/chat-plugin-market/compare/v1.0.0...v1.1.0)
+
+<sup>Released on **2023-08-20**</sup>
+
+#### ✨ Features
+
+- **misc**: Custom market index url.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **misc**: Custom market index url, closes [#3](https://github.com/lobehub/chat-plugin-market/issues/3) ([14cd4b2](https://github.com/lobehub/chat-plugin-market/commit/14cd4b2))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## Version&nbsp;1.0.0
 
 <sup>Released on **2023-08-19**</sup>
