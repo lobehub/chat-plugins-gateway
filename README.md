@@ -6,4 +6,4 @@
 [coverage]: https://codecov.io/gh/lobehub/chat-plugins-gateway/branch/master/graph/badge.svg
 [codecov-url]: https://codecov.io/gh/lobehub/chat-plugins-gateway/branch/master
 
-Lobe Chat 插件市场列表
+Lobe Chat 插件网关
