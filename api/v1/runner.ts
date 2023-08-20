@@ -5,19 +5,21 @@ import {
   ErrorType,
   LobeChatPlugin,
   LobeChatPluginsMarketIndex,
+  PluginRequestPayload,
   createErrorResponse,
   marketIndexSchema,
   pluginManifestSchema,
   pluginMetaSchema,
+  pluginRequestPayloadSchema,
 } from '@lobehub/chat-plugin-sdk';
-
-import { PluginPayload, payloadSchema } from './_validator';
 
 export const config = {
   runtime: 'edge',
 };
 
-const INDEX_URL = `https://registry.npmmirror.com/@lobehub/lobe-chat-plugins/latest/files`;
+const DEFAULT_INDEX_URL =
+  process.env.PLUGINS_INDEX_URL ??
+  'https://registry.npmmirror.com/@lobehub/lobe-chat-plugins/latest/files';
 
 export default async (req: Request) => {
   // ==========  1. 校验请求方法 ========== //
@@ -27,22 +29,23 @@ export default async (req: Request) => {
     });
 
   // ==========  2. 校验请求入参基础格式 ========== //
-  const requestPayload = (await req.json()) as PluginPayload;
+  const requestPayload = (await req.json()) as PluginRequestPayload;
 
-  const payloadParseResult = payloadSchema.safeParse(requestPayload);
+  const payloadParseResult = pluginRequestPayloadSchema.safeParse(requestPayload);
 
   if (!payloadParseResult.success)
     return createErrorResponse(ErrorType.BadRequest, payloadParseResult.error);
 
-  const { name, arguments: args } = requestPayload;
+  const { name, arguments: args, indexUrl } = requestPayload;
 
   console.info(`plugin call: ${name}`);
 
+  const marketIndexUrl = indexUrl ?? DEFAULT_INDEX_URL;
   // ==========  3. 获取插件市场索引 ========== //
 
   let marketIndex: LobeChatPluginsMarketIndex | undefined;
   try {
-    const indexRes = await fetch(INDEX_URL);
+    const indexRes = await fetch(marketIndexUrl);
     marketIndex = await indexRes.json();
   } catch (error) {
     console.error(error);
@@ -52,7 +55,7 @@ export default async (req: Request) => {
   // 插件市场索引不存在
   if (!marketIndex)
     return createErrorResponse(ErrorType.PluginMarketIndexNotFound, {
-      indexUrl: INDEX_URL,
+      indexUrl,
       message: '[gateway] plugin market index not found',
     });
 
@@ -62,7 +65,7 @@ export default async (req: Request) => {
   if (!indexParseResult.success)
     return createErrorResponse(ErrorType.PluginMarketIndexInvalid, {
       error: indexParseResult.error,
-      indexUrl: INDEX_URL,
+      indexUrl,
       marketIndex,
       message: '[gateway] plugin market index is invalid',
     });
@@ -89,7 +92,7 @@ export default async (req: Request) => {
   // 校验插件是否存在
   if (!pluginMeta)
     return createErrorResponse(ErrorType.PluginMetaNotFound, {
-      message: `[gateway] plugin '${name}' is not found，please check the plugin list in ${INDEX_URL}, or create an issue to [lobe-chat-plugins](https://github.com/lobehub/lobe-chat-plugins/issues)`,
+      message: `[gateway] plugin '${name}' is not found，please check the plugin list in ${indexUrl}, or create an issue to [lobe-chat-plugins](https://github.com/lobehub/lobe-chat-plugins/issues)`,
       name,
     });
 
