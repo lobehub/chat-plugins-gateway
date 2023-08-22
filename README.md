@@ -33,9 +33,11 @@ Plugin Gateway Service for Lobe Chat and Lobe Web
 
 #### TOC
 
-- [📦 Installation](#-installation)
+- [👋 Intro](#-introduction)
 
 - [🤯 Usage](#-usage)
+-
+- [🛳 Self Hosting](#-self-hosting)
 
 - [⌨️ Local Development](#️-local-development)
 
@@ -44,6 +46,12 @@ Plugin Gateway Service for Lobe Chat and Lobe Web
 ####
 
 </details>
+
+## 👋 Intro
+
+LobeChat Plugins Gateway is a backend service that provides a gateway for LobeChat plugins. We use [vercel](https://vercel.com/) to deploy this service. The main API `POST /api/v1/runner` is deployed as an [Edge Function](https://vercel.com/docs/functions/edge-functions).
+
+The gateway service fetches lobe plugins index from the [LobeChat Plugins](https://github.com/lobehub/lobe-chat-plugins), if you want to add your plugin to the index, please [submit a PR](https://github.com/lobehub/lobe-chat-plugins/pulls) to the LobeChat Plugins repository.
 
 ## 🤯 Usage
 
@@ -147,6 +155,12 @@ See [API Document](https://apifox.com/apidoc/shared-c574e77f-4230-4727-9c05-c5c9
 [![][back-to-top]](#readme-top)
 
 </div>
+
+## 🛳 Self Hosting
+
+If you want to deploy this service by yourself, you can follow the steps below.
+
+TO_BE_DONE...
 
 ## ⌨️ Local Development
 
