@@ -6,13 +6,13 @@
 <img height="120" src="https://gw.alipayobjects.com/zos/kitchen/qJ3l3EPsdW/split.svg">
 <img height="120" src="https://registry.npmmirror.com/@lobehub/assets-emoji/1.3.0/files/assets/door.webp">
 
-<h1>LobeChat Plugins Gateway</h1>
+<h1>LobeChat 插件网关</h1>
 
-English | [简体中文](./README.zh-CN.md)
+[English](./README.md) | 简体中文
 
-Plugin Gateway Service for Lobe Chat and Lobe Web
+LobeChat Plugin Gateway 是一个为 LobeChat 和 LobeHub 提供 Chat 插件网关的后端服务。
 
-[Changelog](./CHANGELOG.md) · [Report Bug][issues-url] · [Request Feature][issues-url]
+[更新日志](./CHANGELOG.md) · [报告 Bug][issues-url] · [请求功能][issues-url]
 
 <!-- SHIELD GROUP -->
 
@@ -31,46 +31,46 @@ Plugin Gateway Service for Lobe Chat and Lobe Web
 </div>
 
 <details>
-<summary><kbd>Table of contents</kbd></summary>
+<summary><kbd>目录</kbd></summary>
 
-#### TOC
+#### 目录
 
-- [👋 Intro](#-introduction)
+- [👋 简介](#-introduction)
 
-- [🤯 Usage](#-usage)
+- [🤯 使用方法](#-usage)
 -
-- [🛳 Self Hosting](#-self-hosting)
+- [🛳 自托管](#-self-hosting)
 
-- [⌨️ Local Development](#️-local-development)
+- [⌨️ 本地开发](#️-local-development)
 
-- [🤝 Contributing](#-contributing)
+- [🤝 贡献](#-contributing)
 
 ####
 
 </details>
 
-## 👋 Intro
+## 👋 简介
 
-LobeChat Plugins Gateway is a backend service that provides a gateway for LobeChat plugins. We use [vercel](https://vercel.com/) to deploy this service. The main API `POST /api/v1/runner` is deployed as an [Edge Function](https://vercel.com/docs/functions/edge-functions).
+LobeChat 插件网关是一个后端服务，为 LobeChat 插件提供网关。我们使用 [vercel](https://vercel.com/) 来部署此服务。主要 API `POST /api/v1/runner` 部署为[Edge Function](https://vercel.com/docs/functions/edge-functions)。
 
-The gateway service fetches lobe plugins index from the [LobeChat Plugins](https://github.com/lobehub/lobe-chat-plugins), if you want to add your plugin to the index, please [submit a PR](https://github.com/lobehub/lobe-chat-plugins/pulls) to the LobeChat Plugins repository.
+网关服务从 [LobeChat 插件](https://github.com/lobehub/lobe-chat-plugins) 获取 Lobe 插件索引，如果您想将您的插件添加到索引中，请在 LobeChat 插件仓库中[提交 PR](https://github.com/lobehub/lobe-chat-plugins/pulls)。
 
-## 🤯 Usage
+## 🤯 使用方法
 
-Base URLs:
+基本 URL：
 
-| Environment | URL                                  |
-| ----------- | ------------------------------------ |
-| PROD        | https://chat-plugins.lobehub.com     |
-| DEV         | https://chat-plugins-dev.lobehub.com |
+| 环境 | URL                                  |
+| ---- | ------------------------------------ |
+| PROD | https://chat-plugins.lobehub.com     |
+| DEV  | https://chat-plugins-dev.lobehub.com |
 
-### POST Plugin Gateway
+### POST 插件网关
 
 POST `/api/v1/runner`
 
-Interface to communicate with the LobeChat plugin. This interface describes how to use the LobeChat plugin gateway API to send requests and get responses
+与 LobeChat 插件进行通信的接口。此接口描述了如何使用 LobeChat 插件网关 API 发送请求和获取响应。
 
-> Body Request Parameters
+> 请求体参数
 
 ```json
 {
@@ -79,7 +79,7 @@ Interface to communicate with the LobeChat plugin. This interface describes how 
 }
 ```
 
-> Response
+> 响应
 
 ```json
 [
@@ -150,7 +150,7 @@ Interface to communicate with the LobeChat plugin. This interface describes how 
 ]
 ```
 
-See [API Document](https://apifox.com/apidoc/shared-c574e77f-4230-4727-9c05-c5c9988eed06) for more information.
+更多信息请参见[API 文档](https://apifox.com/apidoc/shared-c574e77f-4230-4727-9c05-c5c9988eed06)。
 
 <div align="right">
 
@@ -158,19 +158,19 @@ See [API Document](https://apifox.com/apidoc/shared-c574e77f-4230-4727-9c05-c5c9
 
 </div>
 
-## 🛳 Self Hosting
+## 🛳 自托管
 
-If you want to deploy this service by yourself, you can follow the steps below.
+如果您想自己部署此服务，可以按照以下步骤进行操作。
 
 TO_BE_DONE...
 
-## ⌨️ Local Development
+## ⌨️ 本地开发
 
-You can use Gitpod for online development:
+您可以使用 Gitpod 进行在线开发：
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)][gitpod-url]
 
-Or clone it for local development:
+或者使用以下命令进行本地开发：
 
 ```bash
 $ git clone https://github.com/lobehub/chat-plugins-gateway.git
@@ -184,11 +184,11 @@ $ pnpm start
 
 </div>
 
-## 🤝 Contributing
+## 🤝 贡献
 
 <!-- CONTRIBUTION GROUP -->
 
-> 📊 Total: <kbd>**3**</kbd>
+> 📊 共计: <kbd>**3**</kbd>
 
 <a href="https://github.com/arvinxx" title="arvinxx">
   <img src="https://avatars.githubusercontent.com/u/28616219?v=4" width="50" />
@@ -210,10 +210,10 @@ $ pnpm start
 
 ---
 
-#### 📝 License
+#### 📝 许可证
 
-Copyright © 2023 [LobeHub][profile-url]. <br />
-This project is [MIT](./LICENSE) licensed.
+版权所有 © 2023 [LobeHub][profile-url]。 <br />
+此项目基于 [MIT](./LICENSE) 许可证。
 
 <!-- PLUGIN GROUP -->
 
