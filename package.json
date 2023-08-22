@@ -6,10 +6,10 @@
   "repository": "https://github.com/lobehub/chat-plugins-gateway.git",
   "author": "LobeHub <i@lobehub.com>",
   "sideEffects": false,
-  "main": "dsit/index.js",
-  "types": "dsit/index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
-    "dsit"
+    "dist"
   ],
   "scripts": {
     "build": "father build",
