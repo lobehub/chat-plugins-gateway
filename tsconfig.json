@@ -3,6 +3,7 @@
     "module": "CommonJS",
     "target": "ES5",
     "lib": ["esnext", "DOM"],
+    "declaration": true,
     "sourceMap": true,
     "baseUrl": ".",
     "allowSyntheticDefaultImports": true,
