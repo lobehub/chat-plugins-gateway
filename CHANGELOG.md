@@ -2,6 +2,40 @@
 
 # Changelog
 
+## [Version&nbsp;1.2.0](https://github.com/lobehub/chat-plugins-gateway/compare/v1.1.0...v1.2.0)
+
+<sup>Released on **2023-08-22**</sup>
+
+#### ✨ Features
+
+- **misc**: Add reusable gateway function.
+
+#### 🐛 Bug Fixes
+
+- **misc**: Fix config error, fix config error.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **misc**: Add reusable gateway function ([eba16ab](https://github.com/lobehub/chat-plugins-gateway/commit/eba16ab))
+
+#### What's fixed
+
+- **misc**: Fix config error ([96ed006](https://github.com/lobehub/chat-plugins-gateway/commit/96ed006))
+- **misc**: Fix config error ([25fbd18](https://github.com/lobehub/chat-plugins-gateway/commit/25fbd18))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version&nbsp;1.1.0](https://github.com/lobehub/chat-plugin-market/compare/v1.0.0...v1.1.0)
 
 <sup>Released on **2023-08-20**</sup>
