@@ -1,17 +1,28 @@
 {
-  "name": "lobe-chat-plugin-market",
+  "name": "@lobehub/chat-plugins-gateway",
   "version": "1.1.0",
   "private": true,
   "description": "Lobe Chat Plugin Market",
-  "repository": "https://github.com/lobehub/chat-plugin-market.git",
+  "repository": "https://github.com/lobehub/chat-plugins-gateway.git",
+  "author": "LobeHub <i@lobehub.com>",
+  "sideEffects": false,
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
   "scripts": {
+    "build": "father build",
     "ci": "npm run lint && npm run type-check",
+    "dev": "father dev",
+    "doctor": "father doctor",
     "lint": "npm run lint:js && npm run lint:prettier",
     "lint-staged:js": "eslint --ext .js,.jsx,.ts,.tsx ",
     "lint:fix": "eslint --fix --cache --ext .js,.jsx,.ts,.tsx ./api",
     "lint:js": "eslint --cache --ext .js,.jsx,.ts,.tsx ./api",
     "lint:prettier": "prettier --check \"api/**/*\" --end-of-line auto",
     "prepare": "husky install",
+    "prepublishOnly": "npm run build",
     "prettier": "prettier -c --write \"api/**/*\"",
     "release": "semantic-release",
     "start": "vercel dev",
@@ -42,6 +53,7 @@
     "commitlint": "^17",
     "cross-env": "^7",
     "eslint": "^8",
+    "father": "^4",
     "husky": "^8",
     "lint-staged": "^13",
     "prettier": "^2",
@@ -49,5 +61,9 @@
     "typescript": "^5",
     "vercel": "^28.20.0",
     "vitest": "latest"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
   }
 }
