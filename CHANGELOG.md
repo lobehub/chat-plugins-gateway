@@ -2,6 +2,31 @@
 
 # Changelog
 
+### [Version&nbsp;1.2.2](https://github.com/lobehub/chat-plugins-gateway/compare/v1.2.1...v1.2.2)
+
+<sup>Released on **2023-08-22**</sup>
+
+#### 🐛 Bug Fixes
+
+- **misc**: Fix missing types.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **misc**: Fix missing types ([4d8029d](https://github.com/lobehub/chat-plugins-gateway/commit/4d8029d))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ### [Version&nbsp;1.2.1](https://github.com/lobehub/chat-plugins-gateway/compare/v1.2.0...v1.2.1)
 
 <sup>Released on **2023-08-22**</sup>
