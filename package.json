@@ -6,15 +6,14 @@
   "repository": "https://github.com/lobehub/chat-plugins-gateway.git",
   "author": "LobeHub <i@lobehub.com>",
   "sideEffects": false,
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "main": "dsit/index.js",
+  "types": "dsit/index.d.ts",
   "files": [
-    "lib"
+    "dsit"
   ],
   "scripts": {
     "build": "father build",
     "ci": "npm run lint && npm run type-check",
-    "dev": "father dev",
     "doctor": "father doctor",
     "lint": "npm run lint:js && npm run lint:prettier",
     "lint-staged:js": "eslint --ext .js,.jsx,.ts,.tsx ",
