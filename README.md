@@ -8,7 +8,7 @@
 
 <h1>LobeChat Plugins Gateway</h1>
 
-English | [简体中文](./README.zh-CN.md)
+**English** | [简体中文](./README.zh-CN.md)
 
 Plugin Gateway Service for Lobe Chat and Lobe Web
 
