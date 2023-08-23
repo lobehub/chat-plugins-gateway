@@ -162,7 +162,15 @@ POST `/api/v1/runner`
 
 如果您想自己部署此服务，可以按照以下步骤进行操作。
 
-TO_BE_DONE...
+### 部署到 Vercel
+
+点击下方按钮来部署您的私有插件网关。
+
+[![使用 Vercel 部署](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Flobehub%2Fchat-plugins-gateway&project-name=chat-plugins-gateway&repository-name=chat-plugins-gateway)
+
+如果您想进行一些自定义设置，可以在部署时添加环境变量（Environment Variable）：
+
+- `PLUGINS_INDEX_URL`：你可以通过该变量指定插件市场的索引地址
 
 ## ⌨️ 本地开发
 

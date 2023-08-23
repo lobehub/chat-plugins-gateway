@@ -162,7 +162,15 @@ See [API Document](https://apifox.com/apidoc/shared-c574e77f-4230-4727-9c05-c5c9
 
 If you want to deploy this service by yourself, you can follow the steps below.
 
-TO_BE_DONE...
+### Deploy to Vercel
+
+Click button below to deploy your private plugins' gateway.
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Flobehub%2Fchat-plugins-gateway&project-name=chat-plugins-gateway&repository-name=chat-plugins-gateway)
+
+If you want to make some customization, you can add environment variable:
+
+- `PLUGINS_INDEX_URL`: You can change the default plugins index url as your need.
 
 ## ⌨️ Local Development
 
