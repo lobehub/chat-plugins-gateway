@@ -8,7 +8,7 @@
 
 <h1>LobeChat 插件网关</h1>
 
-[English](./README.md) | 简体中文
+[English](./README.md) | **简体中文**
 
 LobeChat Plugin Gateway 是一个为 LobeChat 和 LobeHub 提供 Chat 插件网关的后端服务。
 
