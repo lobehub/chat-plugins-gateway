@@ -36,13 +36,9 @@ Plugin Gateway Service for Lobe Chat and Lobe Web
 #### TOC
 
 - [👋 Intro](#-introduction)
-
 - [🤯 Usage](#-usage)
--
 - [🛳 Self Hosting](#-self-hosting)
-
 - [⌨️ Local Development](#️-local-development)
-
 - [🤝 Contributing](#-contributing)
 
 ####
