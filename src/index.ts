@@ -3,7 +3,7 @@
 import { Validator } from '@cfworker/json-schema';
 import {
   ErrorType,
-  LobeChatPlugin,
+  LobeChatPluginManifest,
   LobeChatPluginsMarketIndex,
   PluginRequestPayload,
   createErrorResponse,
@@ -33,9 +33,9 @@ export const createLobeChatPluginGateway = (pluginsIndexUrl: string) => {
     if (!payloadParseResult.success)
       return createErrorResponse(ErrorType.BadRequest, payloadParseResult.error);
 
-    const { name, arguments: args, indexUrl } = requestPayload;
+    const { identifier, arguments: args, indexUrl, apiName } = requestPayload;
 
-    console.info(`plugin call: ${name}`);
+    console.info(`[${identifier}] - ${apiName} `);
 
     const marketIndexUrl = indexUrl ?? pluginsIndexUrl;
     // ==========  3. 获取插件市场索引 ========== //
@@ -71,7 +71,7 @@ export const createLobeChatPluginGateway = (pluginsIndexUrl: string) => {
 
     // ==========  4. 校验插件 meta 完备性 ========== //
 
-    const pluginMeta = marketIndex.plugins.find((i) => i.name === name);
+    const pluginMeta = marketIndex.plugins.find((i) => i.identifier === identifier);
 
     // 一个不规范的插件示例
     // const pluginMeta = {
@@ -89,8 +89,8 @@ export const createLobeChatPluginGateway = (pluginsIndexUrl: string) => {
     // 校验插件是否存在
     if (!pluginMeta)
       return createErrorResponse(ErrorType.PluginMetaNotFound, {
-        message: `[gateway] plugin '${name}' is not found，please check the plugin list in ${indexUrl}, or create an issue to [lobe-chat-plugins](https://github.com/lobehub/lobe-chat-plugins/issues)`,
-        name,
+        identifier,
+        message: `[gateway] plugin '${identifier}' is not found，please check the plugin list in ${indexUrl}, or create an issue to [lobe-chat-plugins](https://github.com/lobehub/lobe-chat-plugins/issues)`,
       });
 
     const metaParseResult = pluginMetaSchema.safeParse(pluginMeta);
@@ -105,10 +105,10 @@ export const createLobeChatPluginGateway = (pluginsIndexUrl: string) => {
     // ==========  5. 校验插件 manifest 完备性 ========== //
 
     // 获取插件的 manifest
-    let manifest: LobeChatPlugin | undefined;
+    let manifest: LobeChatPluginManifest | undefined;
     try {
       const pluginRes = await fetch(pluginMeta.manifest);
-      manifest = (await pluginRes.json()) as LobeChatPlugin;
+      manifest = (await pluginRes.json()) as LobeChatPluginManifest;
     } catch (error) {
       console.error(error);
       manifest = undefined;
@@ -129,12 +129,20 @@ export const createLobeChatPluginGateway = (pluginsIndexUrl: string) => {
         message: '[plugin] plugin manifest is invalid',
       });
 
-    console.log(`[${name}] plugin manifest:`, manifest);
+    console.log(`[${identifier}] plugin manifest:`, manifest);
 
     // ==========  6. 校验请求入参与 manifest 要求一致性 ========== //
+    const api = manifest.api.find((i) => i.name === apiName);
+
+    if (!api)
+      return createErrorResponse(ErrorType.BadRequest, {
+        apiName,
+        identifier,
+        message: '[plugin] api not found',
+      });
 
     if (args) {
-      const v = new Validator(manifest.schema.parameters as any);
+      const v = new Validator(api.parameters as any);
       const validator = v.validate(JSON.parse(args!));
 
       if (!validator.valid)
@@ -147,14 +155,14 @@ export const createLobeChatPluginGateway = (pluginsIndexUrl: string) => {
 
     // ==========  7. 发送请求 ========== //
 
-    const response = await fetch(manifest.server.url, { body: args, method: 'post' });
+    const response = await fetch(api.url, { body: args, method: 'post' });
 
     // 不正常的错误，直接返回请求
     if (!response.ok) return response;
 
     const data = await response.text();
 
-    console.log(`[${name}]`, args, `result:`, data.slice(0, 1000));
+    console.log(`[${identifier}]`, args, `result:`, data.slice(0, 1000));
 
     return new Response(data);
   };
