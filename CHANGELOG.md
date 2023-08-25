@@ -2,6 +2,31 @@
 
 # Changelog
 
+### [Version&nbsp;1.2.5](https://github.com/lobehub/chat-plugins-gateway/compare/v1.2.4...v1.2.5)
+
+<sup>Released on **2023-08-25**</sup>
+
+#### 🐛 Bug Fixes
+
+- **misc**: 修正没有呈现索引 url 的问题.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **misc**: 修正没有呈现索引 url 的问题 ([75f94dd](https://github.com/lobehub/chat-plugins-gateway/commit/75f94dd))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ### [Version&nbsp;1.2.4](https://github.com/lobehub/chat-plugins-gateway/compare/v1.2.3...v1.2.4)
 
 <sup>Released on **2023-08-25**</sup>
