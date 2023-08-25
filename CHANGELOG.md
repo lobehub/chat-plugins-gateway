@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version&nbsp;1.3.0](https://github.com/lobehub/chat-plugins-gateway/compare/v1.2.5...v1.3.0)
+
+<sup>Released on **2023-08-25**</sup>
+
+#### ✨ Features
+
+- **misc**: 补充插件网关的校验逻辑.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **misc**: 补充插件网关的校验逻辑 ([c6f5286](https://github.com/lobehub/chat-plugins-gateway/commit/c6f5286))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ### [Version&nbsp;1.2.5](https://github.com/lobehub/chat-plugins-gateway/compare/v1.2.4...v1.2.5)
 
 <sup>Released on **2023-08-25**</sup>
