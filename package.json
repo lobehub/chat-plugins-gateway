@@ -54,7 +54,7 @@
     "father": "^4",
     "husky": "^8",
     "lint-staged": "^13",
-    "prettier": "^2",
+    "prettier": "^3",
     "semantic-release": "^21",
     "typescript": "^5",
     "vercel": "^28.20.0",
