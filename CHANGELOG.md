@@ -2,6 +2,31 @@
 
 # Changelog
 
+### [Version&nbsp;1.2.4](https://github.com/lobehub/chat-plugins-gateway/compare/v1.2.3...v1.2.4)
+
+<sup>Released on **2023-08-25**</sup>
+
+#### 🐛 Bug Fixes
+
+- **misc**: 兼容 sdk 变更.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **misc**: 兼容 sdk 变更 ([7ff08c8](https://github.com/lobehub/chat-plugins-gateway/commit/7ff08c8))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ### [Version&nbsp;1.2.3](https://github.com/lobehub/chat-plugins-gateway/compare/v1.2.2...v1.2.3)
 
 <sup>Released on **2023-08-24**</sup>
