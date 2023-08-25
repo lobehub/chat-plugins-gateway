@@ -2,9 +2,9 @@
 // https://github.com/vercel/next.js/discussions/47063#discussioncomment-5303951
 import { Validator } from '@cfworker/json-schema';
 import {
-  ErrorType,
   LobeChatPluginManifest,
   LobeChatPluginsMarketIndex,
+  PluginErrorType,
   PluginRequestPayload,
   createErrorResponse,
   marketIndexSchema,
@@ -21,7 +21,7 @@ export const createLobeChatPluginGateway = (pluginsIndexUrl: string) => {
   return async (req: Request) => {
     // ==========  1. 校验请求方法 ========== //
     if (req.method !== 'POST')
-      return createErrorResponse(ErrorType.MethodNotAllowed, {
+      return createErrorResponse(PluginErrorType.MethodNotAllowed, {
         message: '[gateway] only allow POST method',
       });
 
@@ -31,7 +31,7 @@ export const createLobeChatPluginGateway = (pluginsIndexUrl: string) => {
     const payloadParseResult = pluginRequestPayloadSchema.safeParse(requestPayload);
 
     if (!payloadParseResult.success)
-      return createErrorResponse(ErrorType.BadRequest, payloadParseResult.error);
+      return createErrorResponse(PluginErrorType.BadRequest, payloadParseResult.error);
 
     const { identifier, arguments: args, indexUrl, apiName } = requestPayload;
 
@@ -51,7 +51,7 @@ export const createLobeChatPluginGateway = (pluginsIndexUrl: string) => {
 
     // 插件市场索引不存在
     if (!marketIndex)
-      return createErrorResponse(ErrorType.PluginMarketIndexNotFound, {
+      return createErrorResponse(PluginErrorType.PluginMarketIndexNotFound, {
         indexUrl,
         message: '[gateway] plugin market index not found',
       });
@@ -60,7 +60,7 @@ export const createLobeChatPluginGateway = (pluginsIndexUrl: string) => {
     const indexParseResult = marketIndexSchema.safeParse(marketIndex);
 
     if (!indexParseResult.success)
-      return createErrorResponse(ErrorType.PluginMarketIndexInvalid, {
+      return createErrorResponse(PluginErrorType.PluginMarketIndexInvalid, {
         error: indexParseResult.error,
         indexUrl,
         marketIndex,
@@ -88,7 +88,7 @@ export const createLobeChatPluginGateway = (pluginsIndexUrl: string) => {
 
     // 校验插件是否存在
     if (!pluginMeta)
-      return createErrorResponse(ErrorType.PluginMetaNotFound, {
+      return createErrorResponse(PluginErrorType.PluginMetaNotFound, {
         identifier,
         message: `[gateway] plugin '${identifier}' is not found，please check the plugin list in ${indexUrl}, or create an issue to [lobe-chat-plugins](https://github.com/lobehub/lobe-chat-plugins/issues)`,
       });
@@ -96,7 +96,7 @@ export const createLobeChatPluginGateway = (pluginsIndexUrl: string) => {
     const metaParseResult = pluginMetaSchema.safeParse(pluginMeta);
 
     if (!metaParseResult.success)
-      return createErrorResponse(ErrorType.PluginMetaInvalid, {
+      return createErrorResponse(PluginErrorType.PluginMetaInvalid, {
         error: metaParseResult.error,
         message: '[plugin] plugin meta is invalid',
         pluginMeta,
@@ -115,7 +115,7 @@ export const createLobeChatPluginGateway = (pluginsIndexUrl: string) => {
     }
 
     if (!manifest)
-      return createErrorResponse(ErrorType.PluginManifestNotFound, {
+      return createErrorResponse(PluginErrorType.PluginManifestNotFound, {
         manifestUrl: pluginMeta.manifest,
         message: '[plugin] plugin manifest not found',
       });
@@ -123,7 +123,7 @@ export const createLobeChatPluginGateway = (pluginsIndexUrl: string) => {
     const manifestParseResult = pluginManifestSchema.safeParse(manifest);
 
     if (!manifestParseResult.success)
-      return createErrorResponse(ErrorType.PluginManifestInvalid, {
+      return createErrorResponse(PluginErrorType.PluginManifestInvalid, {
         error: manifestParseResult.error,
         manifest: manifest,
         message: '[plugin] plugin manifest is invalid',
@@ -135,7 +135,7 @@ export const createLobeChatPluginGateway = (pluginsIndexUrl: string) => {
     const api = manifest.api.find((i) => i.name === apiName);
 
     if (!api)
-      return createErrorResponse(ErrorType.BadRequest, {
+      return createErrorResponse(PluginErrorType.BadRequest, {
         apiName,
         identifier,
         message: '[plugin] api not found',
@@ -146,7 +146,7 @@ export const createLobeChatPluginGateway = (pluginsIndexUrl: string) => {
       const validator = v.validate(JSON.parse(args!));
 
       if (!validator.valid)
-        return createErrorResponse(ErrorType.BadRequest, {
+        return createErrorResponse(PluginErrorType.BadRequest, {
           error: validator.errors,
           manifest,
           message: '[plugin] args is invalid with plugin manifest schema',
