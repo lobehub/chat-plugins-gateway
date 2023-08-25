@@ -7,6 +7,8 @@ import {
   PluginErrorType,
   PluginRequestPayload,
   createErrorResponse,
+  createHeadersWithPluginSettings,
+  getPluginSettingsStringFromRequest,
   marketIndexSchema,
   pluginManifestSchema,
   pluginMetaSchema,
@@ -90,7 +92,7 @@ export const createLobeChatPluginGateway = (pluginsIndexUrl: string) => {
     if (!pluginMeta)
       return createErrorResponse(PluginErrorType.PluginMetaNotFound, {
         identifier,
-        message: `[gateway] plugin '${identifier}' is not found，please check the plugin list in ${indexUrl}, or create an issue to [lobe-chat-plugins](https://github.com/lobehub/lobe-chat-plugins/issues)`,
+        message: `[gateway] plugin '${identifier}' is not found，please check the plugin list in ${marketIndexUrl}, or create an issue to [lobe-chat-plugins](https://github.com/lobehub/lobe-chat-plugins/issues)`,
       });
 
     const metaParseResult = pluginMetaSchema.safeParse(pluginMeta);
@@ -131,31 +133,54 @@ export const createLobeChatPluginGateway = (pluginsIndexUrl: string) => {
 
     console.log(`[${identifier}] plugin manifest:`, manifest);
 
-    // ==========  6. 校验请求入参与 manifest 要求一致性 ========== //
+    // ==========  6. 校验是否按照 manifest 包含了 settings 配置 ========== //
+    const settings = getPluginSettingsStringFromRequest(req);
+
+    if (manifest.settings) {
+      const v = new Validator(manifest.settings as any);
+      const validator = v.validate(settings);
+      if (!validator.valid)
+        return createErrorResponse(PluginErrorType.PluginSettingsInvalid, {
+          error: validator.errors,
+          message: '[plugin] your settings is invalid with plugin manifest setting schema',
+          settings,
+        });
+    }
+
+    // ==========  7. 校验请求入参与 manifest 要求一致性 ========== //
     const api = manifest.api.find((i) => i.name === apiName);
 
     if (!api)
-      return createErrorResponse(PluginErrorType.BadRequest, {
-        apiName,
-        identifier,
+      return createErrorResponse(PluginErrorType.PluginApiNotFound, {
+        manifest,
         message: '[plugin] api not found',
+        request: {
+          apiName,
+          identifier,
+        },
       });
 
     if (args) {
       const v = new Validator(api.parameters as any);
-      const validator = v.validate(JSON.parse(args!));
+      const params = JSON.parse(args!);
+      const validator = v.validate(params);
 
       if (!validator.valid)
-        return createErrorResponse(PluginErrorType.BadRequest, {
+        return createErrorResponse(PluginErrorType.PluginApiParamsError, {
+          api,
           error: validator.errors,
-          manifest,
-          message: '[plugin] args is invalid with plugin manifest schema',
+          message: '[plugin] args is invalid with plugin manifest api schema',
+          request: params,
         });
     }
 
     // ==========  7. 发送请求 ========== //
 
-    const response = await fetch(api.url, { body: args, method: 'post' });
+    const response = await fetch(api.url, {
+      body: args,
+      headers: createHeadersWithPluginSettings(settings),
+      method: 'POST',
+    });
 
     // 不正常的错误，直接返回请求
     if (!response.ok) return response;
