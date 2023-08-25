@@ -52,7 +52,7 @@ export const createLobeChatPluginGateway = (pluginsIndexUrl: string) => {
     // 插件市场索引不存在
     if (!marketIndex)
       return createErrorResponse(PluginErrorType.PluginMarketIndexNotFound, {
-        indexUrl,
+        indexUrl: marketIndexUrl,
         message: '[gateway] plugin market index not found',
       });
 
@@ -62,7 +62,7 @@ export const createLobeChatPluginGateway = (pluginsIndexUrl: string) => {
     if (!indexParseResult.success)
       return createErrorResponse(PluginErrorType.PluginMarketIndexInvalid, {
         error: indexParseResult.error,
-        indexUrl,
+        indexUrl: marketIndexUrl,
         marketIndex,
         message: '[gateway] plugin market index is invalid',
       });
