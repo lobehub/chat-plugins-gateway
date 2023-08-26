@@ -59,10 +59,10 @@ LobeChat 插件网关是一个后端服务，为 LobeChat 插件提供网关。�
 
 基本 URL：
 
-| 环境 | URL                                  |
-| ---- | ------------------------------------ |
-| PROD | https://chat-plugins.lobehub.com     |
-| DEV  | https://chat-plugins-dev.lobehub.com |
+| 环境 | URL                                          |
+| ---- | -------------------------------------------- |
+| PROD | https://chat-plugins-gateway.lobehub.com     |
+| DEV  | https://chat-plugins-gateway-dev.lobehub.com |
 
 ### POST 插件网关
 

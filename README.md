@@ -55,10 +55,10 @@ The gateway service fetches lobe plugins index from the [LobeChat Plugins](https
 
 Base URLs:
 
-| Environment | URL                                  |
-| ----------- | ------------------------------------ |
-| PROD        | https://chat-plugins.lobehub.com     |
-| DEV         | https://chat-plugins-dev.lobehub.com |
+| Environment | URL                                          |
+| ----------- | -------------------------------------------- |
+| PROD        | https://chat-plugins-gateway.lobehub.com     |
+| DEV         | https://chat-plugins-gateway-dev.lobehub.com |
 
 ### POST Plugin Gateway
 
