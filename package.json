@@ -13,6 +13,7 @@
   "scripts": {
     "build": "father build",
     "ci": "npm run lint && npm run type-check",
+    "dev": "father dev",
     "doctor": "father doctor",
     "lint": "npm run lint:js && npm run lint:prettier",
     "lint-staged:js": "eslint --ext .js,.jsx,.ts,.tsx ",
