@@ -2,6 +2,31 @@
 
 # Changelog
 
+### [Version&nbsp;1.3.2](https://github.com/lobehub/chat-plugins-gateway/compare/v1.3.1...v1.3.2)
+
+<sup>Released on **2023-08-26**</sup>
+
+#### 🐛 Bug Fixes
+
+- **misc**: Change master to main.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **misc**: Change master to main ([134c77f](https://github.com/lobehub/chat-plugins-gateway/commit/134c77f))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ### [Version&nbsp;1.3.1](https://github.com/lobehub/chat-plugins-gateway/compare/v1.3.0...v1.3.1)
 
 <sup>Released on **2023-08-26**</sup>
