@@ -138,7 +138,7 @@ export const createLobeChatPluginGateway = (pluginsIndexUrl: string) => {
 
     if (manifest.settings) {
       const v = new Validator(manifest.settings as any);
-      const validator = v.validate(settings);
+      const validator = v.validate(settings || {});
       if (!validator.valid)
         return createErrorResponse(PluginErrorType.PluginSettingsInvalid, {
           error: validator.errors,
