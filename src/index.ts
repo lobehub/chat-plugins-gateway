@@ -28,9 +28,7 @@ export const createLobeChatPluginGateway = (pluginsIndexUrl: string) => {
       });
 
     // ==========  2. 校验请求入参基础格式 ========== //
-    const requestPayload = (await req.json()) as PluginRequestPayload & {
-      manifest?: LobeChatPluginManifest;
-    };
+    const requestPayload = (await req.json()) as PluginRequestPayload;
 
     const payloadParseResult = pluginRequestPayloadSchema.safeParse(requestPayload);
 
