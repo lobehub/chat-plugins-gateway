@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version&nbsp;1.4.0](https://github.com/lobehub/chat-plugins-gateway/compare/v1.3.2...v1.4.0)
+
+<sup>Released on **2023-08-28**</sup>
+
+#### ✨ Features
+
+- **misc**: 支持入参包含 manifest.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **misc**: 支持入参包含 manifest ([b209fba](https://github.com/lobehub/chat-plugins-gateway/commit/b209fba))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ### [Version&nbsp;1.3.2](https://github.com/lobehub/chat-plugins-gateway/compare/v1.3.1...v1.3.2)
 
 <sup>Released on **2023-08-26**</sup>
