@@ -2,6 +2,31 @@
 
 # Changelog
 
+### [Version&nbsp;1.4.3](https://github.com/lobehub/chat-plugins-gateway/compare/v1.4.2...v1.4.3)
+
+<sup>Released on **2023-08-29**</sup>
+
+#### 🐛 Bug Fixes
+
+- **misc**: 移除跨域限制，解决插件复用的问题.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **misc**: 移除跨域限制，解决插件复用的问题 ([975b705](https://github.com/lobehub/chat-plugins-gateway/commit/975b705))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ### [Version&nbsp;1.4.2](https://github.com/lobehub/chat-plugins-gateway/compare/v1.4.1...v1.4.2)
 
 <sup>Released on **2023-08-29**</sup>
