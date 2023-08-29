@@ -2,6 +2,31 @@
 
 # Changelog
 
+### [Version&nbsp;1.4.1](https://github.com/lobehub/chat-plugins-gateway/compare/v1.4.0...v1.4.1)
+
+<sup>Released on **2023-08-29**</sup>
+
+#### 🐛 Bug Fixes
+
+- **misc**: 内联默认的 索引 URL，解决外部使用问题.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **misc**: 内联默认的 索引 URL，解决外部使用问题 ([54b93d2](https://github.com/lobehub/chat-plugins-gateway/commit/54b93d2))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version&nbsp;1.4.0](https://github.com/lobehub/chat-plugins-gateway/compare/v1.3.2...v1.4.0)
 
 <sup>Released on **2023-08-28**</sup>
