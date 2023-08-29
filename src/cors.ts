@@ -4,9 +4,12 @@
  * web APIs. Feel free to use it in your own projects.
  */
 
-type StaticOrigin = boolean | string | RegExp | (boolean | string | RegExp)[];
+export type StaticOrigin = boolean | string | RegExp | (boolean | string | RegExp)[];
 
-type OriginFn = (origin: string | undefined, req: Request) => StaticOrigin | Promise<StaticOrigin>;
+export type OriginFn = (
+  origin: string | undefined,
+  req: Request,
+) => StaticOrigin | Promise<StaticOrigin>;
 
 export interface CorsOptions {
   allowedHeaders?: string | string[];

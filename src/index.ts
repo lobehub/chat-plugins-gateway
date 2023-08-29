@@ -21,7 +21,13 @@ const DEFAULT_PLUGINS_INDEX_URL = 'https://chat-plugins.lobehub.com';
 
 const createGateway = (pluginsIndexUrl: string = DEFAULT_PLUGINS_INDEX_URL) => {
   return async (req: Request) => {
-    // ==========  1. 校验请求入参基础格式 ========== //
+    // ==========  1. 校验请求方法 ========== //
+    if (req.method !== 'POST')
+      return createErrorResponse(PluginErrorType.MethodNotAllowed, {
+        message: '[gateway] only allow POST method',
+      });
+
+    // ==========  2. 校验请求入参基础格式 ========== //
     const requestPayload = (await req.json()) as PluginRequestPayload;
 
     const payloadParseResult = pluginRequestPayloadSchema.safeParse(requestPayload);
@@ -37,7 +43,7 @@ const createGateway = (pluginsIndexUrl: string = DEFAULT_PLUGINS_INDEX_URL) => {
     // 入参中如果没有 manifest，则从插件市场索引中获取
     if (!manifest) {
       const marketIndexUrl = indexUrl ?? pluginsIndexUrl;
-      // ==========  2. 获取插件市场索引 ========== //
+      // ==========  3. 获取插件市场索引 ========== //
 
       let marketIndex: LobeChatPluginsMarketIndex | undefined;
       try {
@@ -68,7 +74,7 @@ const createGateway = (pluginsIndexUrl: string = DEFAULT_PLUGINS_INDEX_URL) => {
 
       console.info('marketIndex:', marketIndex);
 
-      // ==========  3. 校验插件 meta 完备性 ========== //
+      // ==========  4. 校验插件 meta 完备性 ========== //
 
       const pluginMeta = marketIndex.plugins.find((i) => i.identifier === identifier);
 
@@ -100,7 +106,7 @@ const createGateway = (pluginsIndexUrl: string = DEFAULT_PLUGINS_INDEX_URL) => {
           message: '[plugin] plugin meta is invalid',
           pluginMeta,
         });
-      // ==========  4. 校验插件 manifest 完备性 ========== //
+      // ==========  5. 校验插件 manifest 完备性 ========== //
 
       // 获取插件的 manifest
       try {
@@ -129,7 +135,7 @@ const createGateway = (pluginsIndexUrl: string = DEFAULT_PLUGINS_INDEX_URL) => {
 
     console.log(`[${identifier}] plugin manifest:`, manifest);
 
-    // ==========  5. 校验是否按照 manifest 包含了 settings 配置 ========== //
+    // ==========  6. 校验是否按照 manifest 包含了 settings 配置 ========== //
     const settings = getPluginSettingsStringFromRequest(req);
 
     if (manifest.settings) {
@@ -143,7 +149,7 @@ const createGateway = (pluginsIndexUrl: string = DEFAULT_PLUGINS_INDEX_URL) => {
         });
     }
 
-    // ==========  6. 校验请求入参与 manifest 要求一致性 ========== //
+    // ==========  7. 校验请求入参与 manifest 要求一致性 ========== //
     const api = manifest.api.find((i) => i.name === apiName);
 
     if (!api)
@@ -170,7 +176,7 @@ const createGateway = (pluginsIndexUrl: string = DEFAULT_PLUGINS_INDEX_URL) => {
         });
     }
 
-    // ==========  7. 发送请求 ========== //
+    // ==========  8. 发送请求 ========== //
 
     const response = await fetch(api.url, {
       body: args,
@@ -202,7 +208,9 @@ export interface GatewayOptions {
  * @param options {GatewayOptions}
  */
 export const createLobeChatPluginGateway = (options: GatewayOptions = {}) => {
-  const handler = createGateway(options.pluginsIndexUrl ?? DEFAULT_PLUGINS_INDEX_URL);
+  const handler = createGateway(
+    !!options.pluginsIndexUrl ? options.pluginsIndexUrl : DEFAULT_PLUGINS_INDEX_URL,
+  );
 
   return async (req: Request) => cors(req, await handler(req), options.cors);
 };
