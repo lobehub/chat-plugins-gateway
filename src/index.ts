@@ -15,11 +15,15 @@ import {
   pluginRequestPayloadSchema,
 } from '@lobehub/chat-plugin-sdk';
 
+const DEFAULT_PLUGINS_INDEX_URL = 'https://chat-plugins.lobehub.com';
+
 /**
  * create Gateway Edge Function with plugins index url
  * @param pluginsIndexUrl
  */
-export const createLobeChatPluginGateway = (pluginsIndexUrl: string) => {
+export const createLobeChatPluginGateway = (
+  pluginsIndexUrl: string = DEFAULT_PLUGINS_INDEX_URL,
+) => {
   return async (req: Request) => {
     // ==========  1. 校验请求方法 ========== //
     if (req.method !== 'POST')
