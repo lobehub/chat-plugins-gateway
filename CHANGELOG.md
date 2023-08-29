@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version&nbsp;1.5.0](https://github.com/lobehub/chat-plugins-gateway/compare/v1.4.3...v1.5.0)
+
+<sup>Released on **2023-08-29**</sup>
+
+#### ✨ Features
+
+- **misc**: 更新入参配置，解决跨域兼容性的问题.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **misc**: 更新入参配置，解决跨域兼容性的问题 ([c02451c](https://github.com/lobehub/chat-plugins-gateway/commit/c02451c))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ### [Version&nbsp;1.4.3](https://github.com/lobehub/chat-plugins-gateway/compare/v1.4.2...v1.4.3)
 
 <sup>Released on **2023-08-29**</sup>
