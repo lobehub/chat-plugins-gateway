@@ -25,13 +25,7 @@ export const createLobeChatPluginGateway = (
   pluginsIndexUrl: string = DEFAULT_PLUGINS_INDEX_URL,
 ) => {
   return async (req: Request) => {
-    // ==========  1. 校验请求方法 ========== //
-    if (req.method !== 'POST')
-      return createErrorResponse(PluginErrorType.MethodNotAllowed, {
-        message: '[gateway] only allow POST method',
-      });
-
-    // ==========  2. 校验请求入参基础格式 ========== //
+    // ==========  1. 校验请求入参基础格式 ========== //
     const requestPayload = (await req.json()) as PluginRequestPayload;
 
     const payloadParseResult = pluginRequestPayloadSchema.safeParse(requestPayload);
@@ -47,7 +41,7 @@ export const createLobeChatPluginGateway = (
     // 入参中如果没有 manifest，则从插件市场索引中获取
     if (!manifest) {
       const marketIndexUrl = indexUrl ?? pluginsIndexUrl;
-      // ==========  3. 获取插件市场索引 ========== //
+      // ==========  2. 获取插件市场索引 ========== //
 
       let marketIndex: LobeChatPluginsMarketIndex | undefined;
       try {
@@ -78,7 +72,7 @@ export const createLobeChatPluginGateway = (
 
       console.info('marketIndex:', marketIndex);
 
-      // ==========  4. 校验插件 meta 完备性 ========== //
+      // ==========  3. 校验插件 meta 完备性 ========== //
 
       const pluginMeta = marketIndex.plugins.find((i) => i.identifier === identifier);
 
@@ -110,7 +104,7 @@ export const createLobeChatPluginGateway = (
           message: '[plugin] plugin meta is invalid',
           pluginMeta,
         });
-      // ==========  5. 校验插件 manifest 完备性 ========== //
+      // ==========  4. 校验插件 manifest 完备性 ========== //
 
       // 获取插件的 manifest
       try {
@@ -139,7 +133,7 @@ export const createLobeChatPluginGateway = (
 
     console.log(`[${identifier}] plugin manifest:`, manifest);
 
-    // ==========  6. 校验是否按照 manifest 包含了 settings 配置 ========== //
+    // ==========  5. 校验是否按照 manifest 包含了 settings 配置 ========== //
     const settings = getPluginSettingsStringFromRequest(req);
 
     if (manifest.settings) {
@@ -153,7 +147,7 @@ export const createLobeChatPluginGateway = (
         });
     }
 
-    // ==========  7. 校验请求入参与 manifest 要求一致性 ========== //
+    // ==========  6. 校验请求入参与 manifest 要求一致性 ========== //
     const api = manifest.api.find((i) => i.name === apiName);
 
     if (!api)
