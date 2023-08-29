@@ -15,15 +15,11 @@ import {
   pluginRequestPayloadSchema,
 } from '@lobehub/chat-plugin-sdk';
 
+import cors, { CorsOptions } from './cors';
+
 const DEFAULT_PLUGINS_INDEX_URL = 'https://chat-plugins.lobehub.com';
 
-/**
- * create Gateway Edge Function with plugins index url
- * @param pluginsIndexUrl
- */
-export const createLobeChatPluginGateway = (
-  pluginsIndexUrl: string = DEFAULT_PLUGINS_INDEX_URL,
-) => {
+const createGateway = (pluginsIndexUrl: string = DEFAULT_PLUGINS_INDEX_URL) => {
   return async (req: Request) => {
     // ==========  1. 校验请求入参基础格式 ========== //
     const requestPayload = (await req.json()) as PluginRequestPayload;
@@ -191,4 +187,22 @@ export const createLobeChatPluginGateway = (
 
     return new Response(data);
   };
+};
+
+export interface GatewayOptions {
+  cors?: CorsOptions;
+  /**
+   * @default https://chat-plugins.lobehub.com
+   */
+  pluginsIndexUrl?: string;
+}
+
+/**
+ * create Gateway Edge Function with plugins index url
+ * @param options {GatewayOptions}
+ */
+export const createLobeChatPluginGateway = (options: GatewayOptions = {}) => {
+  const handler = createGateway(options.pluginsIndexUrl ?? DEFAULT_PLUGINS_INDEX_URL);
+
+  return async (req: Request) => cors(req, await handler(req), options.cors);
 };
