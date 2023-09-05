@@ -8,7 +8,7 @@ import {
   PluginRequestPayload,
   createErrorResponse,
   createHeadersWithPluginSettings,
-  getPluginSettingsStringFromRequest,
+  getPluginSettingsFromRequest,
   marketIndexSchema,
   pluginManifestSchema,
   pluginMetaSchema,
@@ -136,7 +136,7 @@ const createGateway = (pluginsIndexUrl: string = DEFAULT_PLUGINS_INDEX_URL) => {
     console.log(`[${identifier}] plugin manifest:`, manifest);
 
     // ==========  6. 校验是否按照 manifest 包含了 settings 配置 ========== //
-    const settings = getPluginSettingsStringFromRequest(req);
+    const settings = getPluginSettingsFromRequest(req);
 
     if (manifest.settings) {
       const v = new Validator(manifest.settings as any);
