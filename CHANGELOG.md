@@ -2,6 +2,31 @@
 
 # Changelog
 
+### [Version&nbsp;1.5.1](https://github.com/lobehub/chat-plugins-gateway/compare/v1.5.0...v1.5.1)
+
+<sup>Released on **2023-09-05**</sup>
+
+#### 🐛 Bug Fixes
+
+- **misc**: Fix getPluginSettingsFromRequest.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **misc**: Fix getPluginSettingsFromRequest ([aad3c7a](https://github.com/lobehub/chat-plugins-gateway/commit/aad3c7a))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version&nbsp;1.5.0](https://github.com/lobehub/chat-plugins-gateway/compare/v1.4.3...v1.5.0)
 
 <sup>Released on **2023-08-29**</sup>

@@ -1,6 +1,6 @@
 {
   "name": "@lobehub/chat-plugins-gateway",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "description": "Lobe Chat Plugin Market",
   "repository": "https://github.com/lobehub/chat-plugins-gateway.git",
   "author": "LobeHub <i@lobehub.com>",
