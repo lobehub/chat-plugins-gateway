@@ -24,7 +24,7 @@ generator: '@tarslib/widdershins v4.0.17'
 
 Base URLs:
 
-- <a href="https://chat-plugins.lobehub.com"> Prod URL: https://chat-plugins.lobehub.com</a>
+- <a href="https://chat-plugins.lobehub.com"> Prod URL: <https://chat-plugins.lobehub.com></a>
 
 # Default
 

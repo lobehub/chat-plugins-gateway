@@ -209,7 +209,7 @@ export interface GatewayOptions {
  */
 export const createLobeChatPluginGateway = (options: GatewayOptions = {}) => {
   const handler = createGateway(
-    !!options.pluginsIndexUrl ? options.pluginsIndexUrl : DEFAULT_PLUGINS_INDEX_URL,
+    options.pluginsIndexUrl ? options.pluginsIndexUrl : DEFAULT_PLUGINS_INDEX_URL,
   );
 
   return async (req: Request) => cors(req, await handler(req), options.cors);

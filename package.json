@@ -15,14 +15,11 @@
     "ci": "npm run lint && npm run type-check",
     "dev": "father dev",
     "doctor": "father doctor",
-    "lint": "npm run lint:js && npm run lint:prettier",
-    "lint-staged:js": "eslint --ext .js,.jsx,.ts,.tsx ",
-    "lint:fix": "eslint --fix --cache --ext .js,.jsx,.ts,.tsx ./api",
-    "lint:js": "eslint --cache --ext .js,.jsx,.ts,.tsx ./api",
-    "lint:prettier": "prettier --check \"api/**/*\" --end-of-line auto",
+    "lint": "eslint \"{src,api,docs}/**/*.{js,jsx,ts,tsx}\" --fix",
+    "lint:md": "remark . --quiet --frail --output",
     "prepare": "husky install",
     "prepublishOnly": "npm run build",
-    "prettier": "prettier -c --write \"api/**/*\"",
+    "prettier": "prettier -c --write \"**/**\"",
     "release": "semantic-release",
     "start": "vercel dev",
     "test": "vitest --passWithNoTests",
@@ -30,9 +27,20 @@
     "type-check": "tsc --noEmit"
   },
   "lint-staged": {
-    "**/*.{js,jsx,ts,tsx}": "npm run lint-staged:js",
-    "**/*.{js,jsx,tsx,ts,less,md,json}": [
-      "prettier --write"
+    "*.md": [
+      "remark --quiet --output --",
+      "prettier --write --no-error-on-unmatched-pattern"
+    ],
+    "*.json": [
+      "prettier --write --no-error-on-unmatched-pattern"
+    ],
+    "*.{js,jsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.{ts,tsx}": [
+      "prettier --parser=typescript --write",
+      "eslint --fix"
     ]
   },
   "browserslist": [
@@ -46,6 +54,7 @@
     "zod": "^3"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17",
     "@lobehub/lint": "latest",
     "@vercel/node": "^2",
     "@vitest/coverage-v8": "latest",
@@ -56,6 +65,8 @@
     "husky": "^8",
     "lint-staged": "^13",
     "prettier": "^3",
+    "remark": "^14",
+    "remark-cli": "^11",
     "semantic-release": "^21",
     "typescript": "^5",
     "vercel": "^28.20.0",

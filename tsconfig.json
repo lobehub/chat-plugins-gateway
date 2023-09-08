@@ -2,18 +2,20 @@
   "compilerOptions": {
     "module": "CommonJS",
     "target": "ES5",
-    "lib": ["esnext", "DOM"],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "declaration": true,
     "sourceMap": true,
+    "skipDefaultLibCheck": true,
+    "jsx": "react-jsx",
     "baseUrl": ".",
     "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
     "noUnusedLocals": true,
+    "resolveJsonModule": true,
     "skipLibCheck": true,
-    "skipDefaultLibCheck": true,
     "strict": true
   },
-  "include": ["types", "api", "src"]
+  "include": ["types", "api", "src", "*.ts"]
 }

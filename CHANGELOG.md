@@ -2,7 +2,7 @@
 
 # Changelog
 
-### [Version&nbsp;1.5.1](https://github.com/lobehub/chat-plugins-gateway/compare/v1.5.0...v1.5.1)
+### [Version 1.5.1](https://github.com/lobehub/chat-plugins-gateway/compare/v1.5.0...v1.5.1)
 
 <sup>Released on **2023-09-05**</sup>
 
@@ -27,7 +27,7 @@
 
 </div>
 
-## [Version&nbsp;1.5.0](https://github.com/lobehub/chat-plugins-gateway/compare/v1.4.3...v1.5.0)
+## [Version 1.5.0](https://github.com/lobehub/chat-plugins-gateway/compare/v1.4.3...v1.5.0)
 
 <sup>Released on **2023-08-29**</sup>
 
@@ -52,7 +52,7 @@
 
 </div>
 
-### [Version&nbsp;1.4.3](https://github.com/lobehub/chat-plugins-gateway/compare/v1.4.2...v1.4.3)
+### [Version 1.4.3](https://github.com/lobehub/chat-plugins-gateway/compare/v1.4.2...v1.4.3)
 
 <sup>Released on **2023-08-29**</sup>
 
@@ -77,7 +77,7 @@
 
 </div>
 
-### [Version&nbsp;1.4.2](https://github.com/lobehub/chat-plugins-gateway/compare/v1.4.1...v1.4.2)
+### [Version 1.4.2](https://github.com/lobehub/chat-plugins-gateway/compare/v1.4.1...v1.4.2)
 
 <sup>Released on **2023-08-29**</sup>
 
@@ -102,7 +102,7 @@
 
 </div>
 
-### [Version&nbsp;1.4.1](https://github.com/lobehub/chat-plugins-gateway/compare/v1.4.0...v1.4.1)
+### [Version 1.4.1](https://github.com/lobehub/chat-plugins-gateway/compare/v1.4.0...v1.4.1)
 
 <sup>Released on **2023-08-29**</sup>
 
@@ -127,7 +127,7 @@
 
 </div>
 
-## [Version&nbsp;1.4.0](https://github.com/lobehub/chat-plugins-gateway/compare/v1.3.2...v1.4.0)
+## [Version 1.4.0](https://github.com/lobehub/chat-plugins-gateway/compare/v1.3.2...v1.4.0)
 
 <sup>Released on **2023-08-28**</sup>
 
@@ -152,7 +152,7 @@
 
 </div>
 
-### [Version&nbsp;1.3.2](https://github.com/lobehub/chat-plugins-gateway/compare/v1.3.1...v1.3.2)
+### [Version 1.3.2](https://github.com/lobehub/chat-plugins-gateway/compare/v1.3.1...v1.3.2)
 
 <sup>Released on **2023-08-26**</sup>
 
@@ -177,7 +177,7 @@
 
 </div>
 
-### [Version&nbsp;1.3.1](https://github.com/lobehub/chat-plugins-gateway/compare/v1.3.0...v1.3.1)
+### [Version 1.3.1](https://github.com/lobehub/chat-plugins-gateway/compare/v1.3.0...v1.3.1)
 
 <sup>Released on **2023-08-26**</sup>
 
@@ -202,7 +202,7 @@
 
 </div>
 
-## [Version&nbsp;1.3.0](https://github.com/lobehub/chat-plugins-gateway/compare/v1.2.5...v1.3.0)
+## [Version 1.3.0](https://github.com/lobehub/chat-plugins-gateway/compare/v1.2.5...v1.3.0)
 
 <sup>Released on **2023-08-25**</sup>
 
@@ -227,7 +227,7 @@
 
 </div>
 
-### [Version&nbsp;1.2.5](https://github.com/lobehub/chat-plugins-gateway/compare/v1.2.4...v1.2.5)
+### [Version 1.2.5](https://github.com/lobehub/chat-plugins-gateway/compare/v1.2.4...v1.2.5)
 
 <sup>Released on **2023-08-25**</sup>
 
@@ -252,7 +252,7 @@
 
 </div>
 
-### [Version&nbsp;1.2.4](https://github.com/lobehub/chat-plugins-gateway/compare/v1.2.3...v1.2.4)
+### [Version 1.2.4](https://github.com/lobehub/chat-plugins-gateway/compare/v1.2.3...v1.2.4)
 
 <sup>Released on **2023-08-25**</sup>
 
@@ -277,7 +277,7 @@
 
 </div>
 
-### [Version&nbsp;1.2.3](https://github.com/lobehub/chat-plugins-gateway/compare/v1.2.2...v1.2.3)
+### [Version 1.2.3](https://github.com/lobehub/chat-plugins-gateway/compare/v1.2.2...v1.2.3)
 
 <sup>Released on **2023-08-24**</sup>
 
@@ -302,7 +302,7 @@
 
 </div>
 
-### [Version&nbsp;1.2.2](https://github.com/lobehub/chat-plugins-gateway/compare/v1.2.1...v1.2.2)
+### [Version 1.2.2](https://github.com/lobehub/chat-plugins-gateway/compare/v1.2.1...v1.2.2)
 
 <sup>Released on **2023-08-22**</sup>
 
@@ -327,7 +327,7 @@
 
 </div>
 
-### [Version&nbsp;1.2.1](https://github.com/lobehub/chat-plugins-gateway/compare/v1.2.0...v1.2.1)
+### [Version 1.2.1](https://github.com/lobehub/chat-plugins-gateway/compare/v1.2.0...v1.2.1)
 
 <sup>Released on **2023-08-22**</sup>
 
@@ -352,7 +352,7 @@
 
 </div>
 
-## [Version&nbsp;1.2.0](https://github.com/lobehub/chat-plugins-gateway/compare/v1.1.0...v1.2.0)
+## [Version 1.2.0](https://github.com/lobehub/chat-plugins-gateway/compare/v1.1.0...v1.2.0)
 
 <sup>Released on **2023-08-22**</sup>
 
@@ -386,7 +386,7 @@
 
 </div>
 
-## [Version&nbsp;1.1.0](https://github.com/lobehub/chat-plugin-market/compare/v1.0.0...v1.1.0)
+## [Version 1.1.0](https://github.com/lobehub/chat-plugin-market/compare/v1.0.0...v1.1.0)
 
 <sup>Released on **2023-08-20**</sup>
 
@@ -411,7 +411,7 @@
 
 </div>
 
-## Version&nbsp;1.0.0
+## Version 1.0.0
 
 <sup>Released on **2023-08-19**</sup>
 

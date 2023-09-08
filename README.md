@@ -36,9 +36,18 @@ Plugin Gateway Service for Lobe Chat and Lobe Web
 #### TOC
 
 - [👋 Intro](#-intro)
+
 - [🤯 Usage](#-usage)
+
+  - [Base URLs](#base-urls)
+  - [POST Plugin Gateway](#post-plugin-gateway)
+
 - [🛳 Self Hosting](#-self-hosting)
+
+  - [Deploy to Vercel](#deploy-to-vercel)
+
 - [⌨️ Local Development](#️-local-development)
+
 - [🤝 Contributing](#-contributing)
 
 ####
@@ -51,22 +60,28 @@ LobeChat Plugins Gateway is a backend service that provides a gateway for LobeCh
 
 The gateway service fetches lobe plugins index from the [LobeChat Plugins](https://github.com/lobehub/lobe-chat-plugins), if you want to add your plugin to the index, please [submit a PR](https://github.com/lobehub/lobe-chat-plugins/pulls) to the LobeChat Plugins repository.
 
+<div align="right">
+
+[![][back-to-top]](#readme-top)
+
+</div>
+
 ## 🤯 Usage
 
-Base URLs:
+### Base URLs
 
-| Environment | URL                                          |
-| ----------- | -------------------------------------------- |
-| PROD        | https://chat-plugins-gateway.lobehub.com     |
-| DEV         | https://chat-plugins-gateway-dev.lobehub.com |
+| Environment | URL                                            |
+| ----------- | ---------------------------------------------- |
+| PROD        | <https://chat-plugins-gateway.lobehub.com>     |
+| DEV         | <https://chat-plugins-gateway-dev.lobehub.com> |
 
 ### POST Plugin Gateway
 
-POST `/api/v1/runner`
+**POST** `/api/v1/runner`
 
 Interface to communicate with the LobeChat plugin. This interface describes how to use the LobeChat plugin gateway API to send requests and get responses
 
-> Body Request Parameters
+#### Body Request Parameters
 
 ```json
 {
@@ -75,7 +90,7 @@ Interface to communicate with the LobeChat plugin. This interface describes how 
 }
 ```
 
-> Response
+#### Response
 
 ```json
 [
@@ -168,6 +183,12 @@ If you want to make some customization, you can add environment variable:
 
 - `PLUGINS_INDEX_URL`: You can change the default plugins index url as your need.
 
+<div align="right">
+
+[![][back-to-top]](#readme-top)
+
+</div>
+
 ## ⌨️ Local Development
 
 You can use Gitpod for online development:
@@ -216,56 +237,26 @@ $ pnpm start
 Copyright © 2023 [LobeHub][profile-url]. <br />
 This project is [MIT](./LICENSE) licensed.
 
-<!-- PLUGIN GROUP -->
-
-[plugin-shield]: https://img.shields.io/badge/%F0%9F%A4%AF_LobeChat-plugin-cyan
-[plugin-url]: https://github.com/lobehub/lobe-chat-plugins
-
 <!-- LINK GROUP -->
 
-[profile-url]: https://github.com/lobehub
-[gitpod-url]: https://gitpod.io/#https://github.com/lobehub/chat-plugins-gateway
-
-<!-- SHIELD LINK GROUP -->
-
 [back-to-top]: https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square
-
-<!-- release -->
-
-[release-shield]: https://img.shields.io/npm/v/@lobehub/chat-plugins-gateway?label=%F0%9F%A4%AF%20NPM
-[release-url]: https://www.npmjs.com/package/@lobehub/chat-plugins-gateway
-
-<!-- releaseDate -->
-
-[release-date-shield]: https://img.shields.io/github/release-date/lobehub/chat-plugins-gateway?style=flat
-[release-date-url]: https://github.com/lobehub/chat-plugins-gateway/releases
-
-<!-- ciTest -->
-
-[ci-test-shield]: https://github.com/lobehub/chat-plugins-gateway/actions/workflows/test.yml/badge.svg
-[ci-test-url]: https://github.com/lobehub/chat-plugins-gateway/actions/workflows/test.yml
-
-<!-- ciRelease -->
-
 [ci-release-shield]: https://github.com/lobehub/chat-plugins-gateway/actions/workflows/release.yml/badge.svg
 [ci-release-url]: https://github.com/lobehub/chat-plugins-gateway/actions/workflows/release.yml
-
-<!-- contributors -->
-
+[ci-test-shield]: https://github.com/lobehub/chat-plugins-gateway/actions/workflows/test.yml/badge.svg
+[ci-test-url]: https://github.com/lobehub/chat-plugins-gateway/actions/workflows/test.yml
 [contributors-shield]: https://img.shields.io/github/contributors/lobehub/chat-plugins-gateway.svg?style=flat
 [contributors-url]: https://github.com/lobehub/chat-plugins-gateway/graphs/contributors
-
-<!-- forks -->
-
 [forks-shield]: https://img.shields.io/github/forks/lobehub/chat-plugins-gateway.svg?style=flat
 [forks-url]: https://github.com/lobehub/chat-plugins-gateway/network/members
-
-<!-- stargazers -->
-
-[stargazers-shield]: https://img.shields.io/github/stars/lobehub/chat-plugins-gateway.svg?style=flat
-[stargazers-url]: https://github.com/lobehub/chat-plugins-gateway/stargazers
-
-<!-- issues -->
-
+[gitpod-url]: https://gitpod.io/#https://github.com/lobehub/chat-plugins-gateway
 [issues-shield]: https://img.shields.io/github/issues/lobehub/chat-plugins-gateway.svg?style=flat
 [issues-url]: https://github.com/lobehub/chat-plugins-gateway/issues/new/choose
+[plugin-shield]: https://img.shields.io/badge/%F0%9F%A4%AF_LobeChat-plugin-cyan
+[plugin-url]: https://github.com/lobehub/lobe-chat-plugins
+[profile-url]: https://github.com/lobehub
+[release-date-shield]: https://img.shields.io/github/release-date/lobehub/chat-plugins-gateway?style=flat
+[release-date-url]: https://github.com/lobehub/chat-plugins-gateway/releases
+[release-shield]: https://img.shields.io/npm/v/@lobehub/chat-plugins-gateway?label=%F0%9F%A4%AF%20NPM
+[release-url]: https://www.npmjs.com/package/@lobehub/chat-plugins-gateway
+[stargazers-shield]: https://img.shields.io/github/stars/lobehub/chat-plugins-gateway.svg?style=flat
+[stargazers-url]: https://github.com/lobehub/chat-plugins-gateway/stargazers
