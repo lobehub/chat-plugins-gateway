@@ -8,11 +8,9 @@
 
 <h1>LobeChat 插件网关</h1>
 
-[English](./README.md) | **简体中文**
-
 LobeChat Plugin Gateway 是一个为 LobeChat 和 LobeHub 提供 Chat 插件网关的后端服务。
 
-[更新日志](./CHANGELOG.md) · [报告 Bug][issues-url] · [请求功能][issues-url]
+[English](./README.md) · **简体中文** · [更新日志](./CHANGELOG.md) · [报告 Bug][issues-url] · [请求功能][issues-url]
 
 <!-- SHIELD GROUP -->
 
@@ -70,16 +68,16 @@ LobeChat 插件网关是一个后端服务，为 LobeChat 插件提供网关。�
 
 ### 基本 URL
 
-| 环境 | URL                                            |
-| ---- | ---------------------------------------------- |
-| PROD | <https://chat-plugins-gateway.lobehub.com>     |
-| DEV  | <https://chat-plugins-gateway-dev.lobehub.com> |
+| 环境   | URL                                            |
+| ------ | ---------------------------------------------- |
+| `PROD` | <https://chat-plugins-gateway.lobehub.com>     |
+| `DEV`  | <https://chat-plugins-gateway-dev.lobehub.com> |
 
 ### POST 插件网关
 
-**POST** `/api/v1/runner`
-
-与 LobeChat 插件进行通信的接口。此接口描述了如何使用 LobeChat 插件网关 API 发送请求和获取响应。
+> **Note**\
+> **POST** `/api/v1/runner`\
+> 与 LobeChat 插件进行通信的接口。此接口描述了如何使用 LobeChat 插件网关 API 发送请求和获取响应。
 
 #### Body Request Parameters 请求体参数
 
@@ -211,21 +209,7 @@ $ pnpm start
 
 ## 🤝 参与贡献
 
-<!-- CONTRIBUTION GROUP -->
-
-> 📊 共计: <kbd>**3**</kbd>
-
-<a href="https://github.com/arvinxx" title="arvinxx">
-  <img src="https://avatars.githubusercontent.com/u/28616219?v=4" width="50" />
-</a>
-<a href="https://github.com/apps/dependabot" title="dependabot[bot]">
-  <img src="https://avatars.githubusercontent.com/in/29110?v=4" width="50" />
-</a>
-<a href="https://github.com/actions-user" title="actions-user">
-  <img src="https://avatars.githubusercontent.com/u/65916846?v=4" width="50" />
-</a>
-
-<!-- CONTRIBUTION END -->
+[![][contributors-contrib]][contributors-url]
 
 <div align="right">
 
@@ -247,6 +231,7 @@ This project is [MIT](./LICENSE) licensed.
 [ci-release-url]: https://github.com/lobehub/chat-plugins-gateway/actions/workflows/release.yml
 [ci-test-shield]: https://github.com/lobehub/chat-plugins-gateway/actions/workflows/test.yml/badge.svg
 [ci-test-url]: https://github.com/lobehub/chat-plugins-gateway/actions/workflows/test.yml
+[contributors-contrib]: https://contrib.rocks/image?repo=lobehub/chat-plugins-gateway
 [contributors-shield]: https://img.shields.io/github/contributors/lobehub/chat-plugins-gateway.svg?style=flat
 [contributors-url]: https://github.com/lobehub/chat-plugins-gateway/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/lobehub/chat-plugins-gateway.svg?style=flat
