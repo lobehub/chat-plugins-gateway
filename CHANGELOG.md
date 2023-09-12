@@ -2,6 +2,33 @@
 
 # Changelog
 
+### [Version 1.5.3](https://github.com/lobehub/chat-plugins-gateway/compare/v1.5.2...v1.5.3)
+
+<sup>Released on **2023-09-12**</sup>
+
+#### 🐛 Bug Fixes
+
+- **misc**: Fix ci, Fix father version, Fix lint.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **misc**: Fix ci ([9099c61](https://github.com/lobehub/chat-plugins-gateway/commit/9099c61))
+- **misc**: Fix father version ([9668073](https://github.com/lobehub/chat-plugins-gateway/commit/9668073))
+- **misc**: Fix lint ([3e47791](https://github.com/lobehub/chat-plugins-gateway/commit/3e47791))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ### [Version 1.5.2](https://github.com/lobehub/chat-plugins-gateway/compare/v1.5.1...v1.5.2)
 
 <sup>Released on **2023-09-08**</sup>
