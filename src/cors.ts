@@ -102,9 +102,9 @@ export default async function cors(req: Request, res: Response, options?: CorsOp
   // If there's no origin we won't touch the response
   if (!originHeaders) return res;
 
-  for (const [index, element] of originHeaders.entries()) {
+  originHeaders.forEach((element, index) => {
     mergeHeaders(element, index);
-  }
+  });
 
   if (opts.credentials) {
     headers.set('Access-Control-Allow-Credentials', 'true');
@@ -126,9 +126,9 @@ export default async function cors(req: Request, res: Response, options?: CorsOp
       headers.set('Access-Control-Allow-Methods', methods);
     }
 
-    for (const [index, element] of getAllowedHeaders(req, opts.allowedHeaders).entries()) {
+    getAllowedHeaders(req, opts.allowedHeaders).forEach((element, index) => {
       mergeHeaders(element, index);
-    }
+    });
 
     if (typeof opts.maxAge === 'number') {
       headers.set('Access-Control-Max-Age', String(opts.maxAge));
