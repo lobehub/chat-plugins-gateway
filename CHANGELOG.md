@@ -2,7 +2,7 @@
 
 # Changelog
 
-### [Version 1.5.3](https://github.com/lobehub/chat-plugins-gateway/compare/v1.5.2...v1.5.3)
+### [Version 1.5.3](https://github.com/lobehub/chat-plugins-gateway/compare/v1.5.2...v1.5.3)
 
 <sup>Released on **2023-09-12**</sup>
 
@@ -29,7 +29,7 @@
 
 </div>
 
-### [Version 1.5.2](https://github.com/lobehub/chat-plugins-gateway/compare/v1.5.1...v1.5.2)
+### [Version 1.5.2](https://github.com/lobehub/chat-plugins-gateway/compare/v1.5.1...v1.5.2)
 
 <sup>Released on **2023-09-08**</sup>
 
@@ -54,7 +54,7 @@
 
 </div>
 
-### [Version 1.5.1](https://github.com/lobehub/chat-plugins-gateway/compare/v1.5.0...v1.5.1)
+### [Version 1.5.1](https://github.com/lobehub/chat-plugins-gateway/compare/v1.5.0...v1.5.1)
 
 <sup>Released on **2023-09-05**</sup>
 
@@ -79,7 +79,7 @@
 
 </div>
 
-## [Version 1.5.0](https://github.com/lobehub/chat-plugins-gateway/compare/v1.4.3...v1.5.0)
+## [Version 1.5.0](https://github.com/lobehub/chat-plugins-gateway/compare/v1.4.3...v1.5.0)
 
 <sup>Released on **2023-08-29**</sup>
 
@@ -104,7 +104,7 @@
 
 </div>
 
-### [Version 1.4.3](https://github.com/lobehub/chat-plugins-gateway/compare/v1.4.2...v1.4.3)
+### [Version 1.4.3](https://github.com/lobehub/chat-plugins-gateway/compare/v1.4.2...v1.4.3)
 
 <sup>Released on **2023-08-29**</sup>
 
@@ -129,7 +129,7 @@
 
 </div>
 
-### [Version 1.4.2](https://github.com/lobehub/chat-plugins-gateway/compare/v1.4.1...v1.4.2)
+### [Version 1.4.2](https://github.com/lobehub/chat-plugins-gateway/compare/v1.4.1...v1.4.2)
 
 <sup>Released on **2023-08-29**</sup>
 
@@ -154,7 +154,7 @@
 
 </div>
 
-### [Version 1.4.1](https://github.com/lobehub/chat-plugins-gateway/compare/v1.4.0...v1.4.1)
+### [Version 1.4.1](https://github.com/lobehub/chat-plugins-gateway/compare/v1.4.0...v1.4.1)
 
 <sup>Released on **2023-08-29**</sup>
 
@@ -179,7 +179,7 @@
 
 </div>
 
-## [Version 1.4.0](https://github.com/lobehub/chat-plugins-gateway/compare/v1.3.2...v1.4.0)
+## [Version 1.4.0](https://github.com/lobehub/chat-plugins-gateway/compare/v1.3.2...v1.4.0)
 
 <sup>Released on **2023-08-28**</sup>
 
@@ -204,7 +204,7 @@
 
 </div>
 
-### [Version 1.3.2](https://github.com/lobehub/chat-plugins-gateway/compare/v1.3.1...v1.3.2)
+### [Version 1.3.2](https://github.com/lobehub/chat-plugins-gateway/compare/v1.3.1...v1.3.2)
 
 <sup>Released on **2023-08-26**</sup>
 
@@ -229,7 +229,7 @@
 
 </div>
 
-### [Version 1.3.1](https://github.com/lobehub/chat-plugins-gateway/compare/v1.3.0...v1.3.1)
+### [Version 1.3.1](https://github.com/lobehub/chat-plugins-gateway/compare/v1.3.0...v1.3.1)
 
 <sup>Released on **2023-08-26**</sup>
 
@@ -254,7 +254,7 @@
 
 </div>
 
-## [Version 1.3.0](https://github.com/lobehub/chat-plugins-gateway/compare/v1.2.5...v1.3.0)
+## [Version 1.3.0](https://github.com/lobehub/chat-plugins-gateway/compare/v1.2.5...v1.3.0)
 
 <sup>Released on **2023-08-25**</sup>
 
@@ -279,7 +279,7 @@
 
 </div>
 
-### [Version 1.2.5](https://github.com/lobehub/chat-plugins-gateway/compare/v1.2.4...v1.2.5)
+### [Version 1.2.5](https://github.com/lobehub/chat-plugins-gateway/compare/v1.2.4...v1.2.5)
 
 <sup>Released on **2023-08-25**</sup>
 
@@ -304,7 +304,7 @@
 
 </div>
 
-### [Version 1.2.4](https://github.com/lobehub/chat-plugins-gateway/compare/v1.2.3...v1.2.4)
+### [Version 1.2.4](https://github.com/lobehub/chat-plugins-gateway/compare/v1.2.3...v1.2.4)
 
 <sup>Released on **2023-08-25**</sup>
 
@@ -329,7 +329,7 @@
 
 </div>
 
-### [Version 1.2.3](https://github.com/lobehub/chat-plugins-gateway/compare/v1.2.2...v1.2.3)
+### [Version 1.2.3](https://github.com/lobehub/chat-plugins-gateway/compare/v1.2.2...v1.2.3)
 
 <sup>Released on **2023-08-24**</sup>
 
@@ -354,7 +354,7 @@
 
 </div>
 
-### [Version 1.2.2](https://github.com/lobehub/chat-plugins-gateway/compare/v1.2.1...v1.2.2)
+### [Version 1.2.2](https://github.com/lobehub/chat-plugins-gateway/compare/v1.2.1...v1.2.2)
 
 <sup>Released on **2023-08-22**</sup>
 
@@ -379,7 +379,7 @@
 
 </div>
 
-### [Version 1.2.1](https://github.com/lobehub/chat-plugins-gateway/compare/v1.2.0...v1.2.1)
+### [Version 1.2.1](https://github.com/lobehub/chat-plugins-gateway/compare/v1.2.0...v1.2.1)
 
 <sup>Released on **2023-08-22**</sup>
 
@@ -404,7 +404,7 @@
 
 </div>
 
-## [Version 1.2.0](https://github.com/lobehub/chat-plugins-gateway/compare/v1.1.0...v1.2.0)
+## [Version 1.2.0](https://github.com/lobehub/chat-plugins-gateway/compare/v1.1.0...v1.2.0)
 
 <sup>Released on **2023-08-22**</sup>
 
@@ -438,7 +438,7 @@
 
 </div>
 
-## [Version 1.1.0](https://github.com/lobehub/chat-plugin-market/compare/v1.0.0...v1.1.0)
+## [Version 1.1.0](https://github.com/lobehub/chat-plugin-market/compare/v1.0.0...v1.1.0)
 
 <sup>Released on **2023-08-20**</sup>
 
@@ -463,7 +463,7 @@
 
 </div>
 
-## Version 1.0.0
+## Version 1.0.0
 
 <sup>Released on **2023-08-19**</sup>
 
@@ -473,11 +473,11 @@
 
 #### ✨ Features
 
-- **misc**: Chat plugin gateway 1.0, prod 生产锁定 indexURL 版本, 先使用最简单的方式迁移插件服务端, 初步剥离天气插件, 支持 V1 manifest 版本的方案.
+- **misc**: Chat plugin gateway 1.0, prod 生产锁定 indexURL 版本，先使用最简单的方式迁移插件服务端，初步剥离天气插件，支持 V1 manifest 版本的方案.
 
 #### 🐛 Bug Fixes
 
-- **misc**: Fix console time error, fix import error, fix request error, 修正动态链路的命中逻辑, 修正动态链路的命中逻辑.
+- **misc**: Fix console time error, fix import error, fix request error, 修正动态链路的命中逻辑，修正动态链路的命中逻辑.
 
 <br/>
 
@@ -494,7 +494,7 @@
 - **misc**: Chat plugin gateway 1.0, closes [#2](https://github.com/lobehub/chat-plugin-market/issues/2) ([788a30a](https://github.com/lobehub/chat-plugin-market/commit/788a30a))
 - **misc**: Prod 生产锁定 indexURL 版本 ([80cdafb](https://github.com/lobehub/chat-plugin-market/commit/80cdafb))
 - **misc**: 先使用最简单的方式迁移插件服务端 ([eaf26bd](https://github.com/lobehub/chat-plugin-market/commit/eaf26bd))
-- **misc**: 初步剥离天气插件, closes [#1](https://github.com/lobehub/chat-plugin-market/issues/1) ([ecf1c4c](https://github.com/lobehub/chat-plugin-market/commit/ecf1c4c))
+- **misc**: 初步剥离天气插件，closes [#1](https://github.com/lobehub/chat-plugin-market/issues/1) ([ecf1c4c](https://github.com/lobehub/chat-plugin-market/commit/ecf1c4c))
 - **misc**: 支持 V1 manifest 版本的方案 ([8f26a6c](https://github.com/lobehub/chat-plugin-market/commit/8f26a6c))
 
 #### What's fixed
