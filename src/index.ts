@@ -176,13 +176,58 @@ const createGateway = (pluginsIndexUrl: string = DEFAULT_PLUGINS_INDEX_URL) => {
         });
     }
 
-    // ==========  8. 发送请求 ========== //
+    // ==========  8. 兼容 OpenAPI 请求模式 ========== //
+    if (manifest.openapi) {
+      // @ts-ignore
+      const { default: SwaggerClient } = await import('swagger-client');
+
+      const client = await SwaggerClient({
+        authorizations: {
+          // apiKeyAuth: '',
+        },
+        url: manifest.openapi,
+      });
+
+      const parameters = JSON.parse(args || '{}');
+
+      try {
+        const res = await client.execute({
+          operationId: apiName,
+          parameters,
+        });
+
+        return new Response(res.text);
+      } catch (error) {
+        // 如果没有 status，说明没有发送请求，可能是 openapi 相关调用实现的问题
+        if (!(error as any).status)
+          return createErrorResponse('PluginGatewayError', {
+            api,
+            error: (error as Error).message,
+            message:
+              '[plugin] there are problem with sending openapi request, please contact with LobeHub Team',
+          });
+
+        // 如果是 401 则说明是鉴权问题
+        if ((error as Response).status === 401)
+          return createErrorResponse(PluginErrorType.PluginSettingsInvalid);
+
+        return createErrorResponse(PluginErrorType.PluginServerError, { error });
+      }
+    }
+
+    if (!api.url)
+      return createErrorResponse(PluginErrorType.PluginApiParamsError, {
+        api,
+        message: '[plugin] missing api url',
+      });
 
     const response = await fetch(api.url, {
       body: args,
       headers: createHeadersWithPluginSettings(settings),
       method: 'POST',
     });
+
+    // ==========  9. 发送请求 ========== //
 
     // 不正常的错误，直接返回请求
     if (!response.ok) return response;

@@ -13,7 +13,6 @@
   "scripts": {
     "build": "father build",
     "ci": "npm run lint && npm run type-check && npm run doctor",
-    "dev": "father dev",
     "doctor": "father doctor",
     "lint": "eslint \"{src,api,docs}/**/*.{js,jsx,ts,tsx}\" --fix",
     "lint:md": "remark . --quiet --frail --output",
@@ -51,6 +50,7 @@
   "dependencies": {
     "@cfworker/json-schema": "^1",
     "@lobehub/chat-plugin-sdk": "latest",
+    "swagger-client": "^3.24.5",
     "zod": "^3"
   },
   "devDependencies": {
