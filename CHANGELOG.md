@@ -2,6 +2,39 @@
 
 # Changelog
 
+## [Version 1.6.0](https://github.com/lobehub/chat-plugins-gateway/compare/v1.5.3...v1.6.0)
+
+<sup>Released on **2023-12-11**</sup>
+
+#### ✨ Features
+
+- **misc**: Support OpenAPI request mode.
+
+#### 🐛 Bug Fixes
+
+- **misc**: Fix types.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **misc**: Support OpenAPI request mode ([605d947](https://github.com/lobehub/chat-plugins-gateway/commit/605d947))
+
+#### What's fixed
+
+- **misc**: Fix types ([8e2dde4](https://github.com/lobehub/chat-plugins-gateway/commit/8e2dde4))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ### [Version 1.5.3](https://github.com/lobehub/chat-plugins-gateway/compare/v1.5.2...v1.5.3)
 
 <sup>Released on **2023-09-12**</sup>
