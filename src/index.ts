@@ -37,7 +37,7 @@ const createGateway = (pluginsIndexUrl: string = DEFAULT_PLUGINS_INDEX_URL) => {
 
     const { identifier, arguments: args, indexUrl, apiName } = requestPayload;
 
-    let manifest: LobeChatPluginManifest | undefined = requestPayload.manifest;
+    let manifest = requestPayload.manifest as LobeChatPluginManifest | undefined;
     console.info(`[${identifier}] - ${apiName} `);
 
     // 入参中如果没有 manifest，则从插件市场索引中获取
