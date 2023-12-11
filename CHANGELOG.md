@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.7.0](https://github.com/lobehub/chat-plugins-gateway/compare/v1.6.0...v1.7.0)
+
+<sup>Released on **2023-12-11**</sup>
+
+#### ✨ Features
+
+- **misc**: Support basic auth for OpenAPI.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **misc**: Support basic auth for OpenAPI ([d3fe874](https://github.com/lobehub/chat-plugins-gateway/commit/d3fe874))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.6.0](https://github.com/lobehub/chat-plugins-gateway/compare/v1.5.3...v1.6.0)
 
 <sup>Released on **2023-12-11**</sup>
