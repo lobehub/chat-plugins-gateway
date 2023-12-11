@@ -181,20 +181,45 @@ const createGateway = (pluginsIndexUrl: string = DEFAULT_PLUGINS_INDEX_URL) => {
       // @ts-ignore
       const { default: SwaggerClient } = await import('swagger-client');
 
-      const client = await SwaggerClient({
-        authorizations: {
-          // apiKeyAuth: '',
-        },
-        url: manifest.openapi,
-      });
+      const authorizations = {} as {
+        [key: string]: any;
+        basicAuth?: any;
+        oauth2?: {
+          accessToken: string;
+          clientId: string;
+          clientSecret: string;
+        };
+      };
+
+      // 根据 settings 中的每个属性来构建 authorizations 对象
+      for (const [key, value] of Object.entries(settings)) {
+        if (key.endsWith('_username') && key.endsWith('_password')) {
+          // 处理 HTTP Basic Authentication
+          const username = settings[key];
+          const password = settings[key.replace('_username', '_password')];
+          authorizations.basicAuth = new SwaggerClient.PasswordAuthorization(username, password);
+        } else if (
+          key.endsWith('_clientId') &&
+          key.endsWith('_clientSecret') &&
+          key.endsWith('_accessToken')
+        ) {
+          // 处理 OAuth2
+          const clientId = settings[key];
+          const clientSecret = settings[key.replace('_clientId', '_clientSecret')];
+          const accessToken = settings[key.replace('_clientId', '_accessToken')];
+          authorizations.oauth2 = { accessToken, clientId, clientSecret };
+        } else {
+          // 处理 API Key 和 Bearer Token
+          authorizations[key] = value as string;
+        }
+      }
+
+      const client = await SwaggerClient({ authorizations, url: manifest.openapi });
 
       const parameters = JSON.parse(args || '{}');
 
       try {
-        const res = await client.execute({
-          operationId: apiName,
-          parameters,
-        });
+        const res = await client.execute({ operationId: apiName, parameters });
 
         return new Response(res.text);
       } catch (error) {
