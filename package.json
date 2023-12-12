@@ -1,6 +1,6 @@
 {
   "name": "@lobehub/chat-plugins-gateway",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "description": "Lobe Chat Plugin Market",
   "repository": "https://github.com/lobehub/chat-plugins-gateway.git",
   "author": "LobeHub <i@lobehub.com>",
@@ -12,8 +12,8 @@
   ],
   "scripts": {
     "build": "father build",
-    "devs": "father dev",
     "ci": "npm run lint && npm run type-check && npm run doctor",
+    "devs": "father dev",
     "doctor": "father doctor",
     "lint": "eslint \"{src,api,docs}/**/*.{js,jsx,ts,tsx}\" --fix",
     "lint:md": "remark . --quiet --frail --output",

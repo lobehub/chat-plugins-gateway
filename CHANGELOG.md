@@ -2,6 +2,31 @@
 
 # Changelog
 
+### [Version 1.7.1](https://github.com/lobehub/chat-plugins-gateway/compare/v1.7.0...v1.7.1)
+
+<sup>Released on **2023-12-12**</sup>
+
+#### 🐛 Bug Fixes
+
+- **misc**: Fix error with openapi client init.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **misc**: Fix error with openapi client init ([b652cb5](https://github.com/lobehub/chat-plugins-gateway/commit/b652cb5))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.7.0](https://github.com/lobehub/chat-plugins-gateway/compare/v1.6.0...v1.7.0)
 
 <sup>Released on **2023-12-11**</sup>
