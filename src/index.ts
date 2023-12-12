@@ -233,13 +233,19 @@ const createGateway = (pluginsIndexUrl: string = DEFAULT_PLUGINS_INDEX_URL) => {
         return new Response(res.text);
       } catch (error) {
         // 如果没有 status，说明没有发送请求，可能是 openapi 相关调用实现的问题
-        if (!(error as any).status)
+        if (!(error as any).status) {
+          console.error(error);
+
           return createErrorResponse(PluginErrorType.PluginGatewayError, {
-            api,
+            authorizations,
+            apiName,
+            parameters,
             error: (error as Error).message,
             message:
               '[plugin] there are problem with sending openapi request, please contact with LobeHub Team',
+            openapi: manifest.openapi,
           });
+        }
 
         // 如果是 401 则说明是鉴权问题
         if ((error as Response).status === 401)
