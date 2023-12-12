@@ -2,6 +2,31 @@
 
 # Changelog
 
+### [Version 1.7.2](https://github.com/lobehub/chat-plugins-gateway/compare/v1.7.1...v1.7.2)
+
+<sup>Released on **2023-12-12**</sup>
+
+#### 🐛 Bug Fixes
+
+- **misc**: Improve PluginGatewayError error response.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **misc**: Improve PluginGatewayError error response ([18b1c43](https://github.com/lobehub/chat-plugins-gateway/commit/18b1c43))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ### [Version 1.7.1](https://github.com/lobehub/chat-plugins-gateway/compare/v1.7.0...v1.7.1)
 
 <sup>Released on **2023-12-12**</sup>
