@@ -12,6 +12,7 @@
   ],
   "scripts": {
     "build": "father build",
+    "devs": "father dev",
     "ci": "npm run lint && npm run type-check && npm run doctor",
     "doctor": "father doctor",
     "lint": "eslint \"{src,api,docs}/**/*.{js,jsx,ts,tsx}\" --fix",

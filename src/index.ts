@@ -214,7 +214,16 @@ const createGateway = (pluginsIndexUrl: string = DEFAULT_PLUGINS_INDEX_URL) => {
         }
       }
 
-      const client = await SwaggerClient({ authorizations, url: manifest.openapi });
+      let client;
+      try {
+        client = await SwaggerClient({ authorizations, url: manifest.openapi });
+      } catch (e) {
+        return createErrorResponse(PluginErrorType.PluginOpenApiInitError, {
+          error: e,
+          message: '[plugin] openapi client init error',
+          openapi: manifest.openapi,
+        });
+      }
 
       const parameters = JSON.parse(args || '{}');
 
@@ -225,7 +234,7 @@ const createGateway = (pluginsIndexUrl: string = DEFAULT_PLUGINS_INDEX_URL) => {
       } catch (error) {
         // 如果没有 status，说明没有发送请求，可能是 openapi 相关调用实现的问题
         if (!(error as any).status)
-          return createErrorResponse('PluginGatewayError', {
+          return createErrorResponse(PluginErrorType.PluginGatewayError, {
             api,
             error: (error as Error).message,
             message:
