@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.8.0-beta.4](https://github.com/lobehub/chat-plugins-gateway/compare/v1.8.0-beta.3...v1.8.0-beta.4)
+
+<sup>Released on **2023-12-13**</sup>
+
+#### 🐛 Bug Fixes
+
+- **misc**: Close ajv strict mode.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **misc**: Close ajv strict mode ([a6eb5b6](https://github.com/lobehub/chat-plugins-gateway/commit/a6eb5b6))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.8.0-beta.3](https://github.com/lobehub/chat-plugins-gateway/compare/v1.8.0-beta.2...v1.8.0-beta.3)
 
 <sup>Released on **2023-12-13**</sup>
