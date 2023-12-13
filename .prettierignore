@@ -59,6 +59,5 @@ Dockerfile*
 
 # misc
 # add other ignore file below
-tests
 .env.example
 .env

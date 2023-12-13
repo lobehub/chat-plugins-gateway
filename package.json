@@ -1,6 +1,6 @@
 {
   "name": "@lobehub/chat-plugins-gateway",
-  "version": "1.7.2",
+  "version": "1.8.0-beta.4",
   "description": "Lobe Chat Plugin Market",
   "repository": "https://github.com/lobehub/chat-plugins-gateway.git",
   "author": "LobeHub <i@lobehub.com>",
@@ -22,8 +22,9 @@
     "prettier": "prettier -c --write \"**/**\"",
     "release": "semantic-release",
     "start": "vercel dev",
-    "test": "vitest --passWithNoTests",
-    "test:coverage": "vitest --coverage  --passWithNoTests",
+    "test": "vitest",
+    "test:coverage": "vitest --coverage",
+    "test:update": "vitest -u",
     "type-check": "tsc --noEmit"
   },
   "lint-staged": {
@@ -49,16 +50,18 @@
     "not ie <= 10"
   ],
   "dependencies": {
+    "@babel/runtime": "^7",
     "@cfworker/json-schema": "^1",
-    "@lobehub/chat-plugin-sdk": "latest",
-    "swagger-client": "^3.24.5",
+    "@lobehub/chat-plugin-sdk": "^1",
+    "ajv": "^8",
+    "swagger-client": "^3",
     "zod": "^3"
   },
   "devDependencies": {
     "@commitlint/cli": "^17",
     "@lobehub/lint": "latest",
     "@vercel/node": "^2",
-    "@vitest/coverage-v8": "latest",
+    "@vitest/coverage-v8": "0.34.6",
     "commitlint": "^17",
     "cross-env": "^7",
     "eslint": "^8",
@@ -70,8 +73,8 @@
     "remark-cli": "^11",
     "semantic-release": "^21",
     "typescript": "^5",
-    "vercel": "^28.20.0",
-    "vitest": "latest"
+    "vercel": "^32.7.1",
+    "vitest": "0.34.6"
   },
   "publishConfig": {
     "access": "public",
