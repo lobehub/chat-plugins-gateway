@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.8.0-beta.2](https://github.com/lobehub/chat-plugins-gateway/compare/v1.8.0-beta.1...v1.8.0-beta.2)
+
+<sup>Released on **2023-12-13**</sup>
+
+#### 🐛 Bug Fixes
+
+- **misc**: Fix request input.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **misc**: Fix request input ([1b896de](https://github.com/lobehub/chat-plugins-gateway/commit/1b896de))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.8.0-beta.1](https://github.com/lobehub/chat-plugins-gateway/compare/v1.7.2...v1.8.0-beta.1)
 
 <sup>Released on **2023-12-13**</sup>
