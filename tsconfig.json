@@ -14,7 +14,10 @@
     "noUnusedLocals": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "strict": true
+    "strict": true,
+    "paths": {
+      "@lobehub/chat-plugins-gateway": ["src"]
+    }
   },
-  "include": ["types", "api", "src", "*.ts"]
+  "include": ["types", "api", "src", "*.ts", "tests"]
 }
