@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.8.0](https://github.com/lobehub/chat-plugins-gateway/compare/v1.7.2...v1.8.0)
+
+<sup>Released on **2023-12-13**</sup>
+
+#### ✨ Features
+
+- **misc**: Support node runtime.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **misc**: Support node runtime, closes [#9](https://github.com/lobehub/chat-plugins-gateway/issues/9) ([28ef918](https://github.com/lobehub/chat-plugins-gateway/commit/28ef918))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.8.0-beta.4](https://github.com/lobehub/chat-plugins-gateway/compare/v1.8.0-beta.3...v1.8.0-beta.4)
 
 <sup>Released on **2023-12-13**</sup>
