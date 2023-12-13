@@ -36,10 +36,14 @@ export const createGatewayOnNodeRuntime = (options: NodeRuntimeGatewayOptions = 
       return;
     }
 
-    const requestPayload = req.body as PluginRequestPayload;
+    let requestPayload = req.body as PluginRequestPayload | string;
+    if (typeof requestPayload === 'string') {
+      requestPayload = JSON.parse(requestPayload) as PluginRequestPayload;
+    }
 
     const settings = getPluginSettingsFromHeaders(req.headers as any);
 
+    console.log(requestPayload, settings);
     try {
       const { data } = await gateway.execute(requestPayload, settings);
 
