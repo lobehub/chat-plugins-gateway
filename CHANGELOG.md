@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.8.0-beta.3](https://github.com/lobehub/chat-plugins-gateway/compare/v1.8.0-beta.2...v1.8.0-beta.3)
+
+<sup>Released on **2023-12-13**</sup>
+
+#### 🐛 Bug Fixes
+
+- **misc**: Fix ajv schema.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **misc**: Fix ajv schema ([40f22c5](https://github.com/lobehub/chat-plugins-gateway/commit/40f22c5))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.8.0-beta.2](https://github.com/lobehub/chat-plugins-gateway/compare/v1.8.0-beta.1...v1.8.0-beta.2)
 
 <sup>Released on **2023-12-13**</sup>
