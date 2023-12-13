@@ -1,7 +1,8 @@
 // reason to use cfworker json schema:
 // https://github.com/vercel/next.js/discussions/47063#discussioncomment-5303951
-import { Validator } from '@cfworker/json-schema';
+import { Schema } from '@cfworker/json-schema';
 import {
+  IPluginErrorType,
   LobeChatPluginApi,
   LobeChatPluginManifest,
   LobeChatPluginsMarketIndex,
@@ -13,11 +14,15 @@ import {
   pluginMetaSchema,
   pluginRequestPayloadSchema,
 } from '@lobehub/chat-plugin-sdk';
-import { IPluginErrorType } from '@lobehub/chat-plugin-sdk/lib/error';
+// @ts-ignore
+import SwaggerClient from 'swagger-client';
 
 export const DEFAULT_PLUGINS_INDEX_URL = 'https://chat-plugins.lobehub.com';
 
+type IValidator = (schema: Schema, value: any) => { errors?: any; valid: boolean };
+
 export interface GatewayOptions {
+  Validator?: IValidator;
   /**
    * @default https://chat-plugins.lobehub.com
    */
@@ -33,22 +38,39 @@ export interface GatewayErrorResponse {
   errorType: IPluginErrorType;
   success: false;
 }
+
 export class Gateway {
   private pluginIndexUrl = DEFAULT_PLUGINS_INDEX_URL;
+  private _validator: IValidator | undefined;
 
   constructor(options?: GatewayOptions) {
     if (options?.pluginsIndexUrl) {
       this.pluginIndexUrl = options.pluginsIndexUrl;
     }
+    if (options?.Validator) {
+      this._validator = options.Validator;
+    }
   }
 
-  createSuccessResponse = (data: string) => {
+  private createSuccessResponse = (data: string) => {
     return { data, success: true } as const;
   };
 
-  createErrorResponse = (errorType: IPluginErrorType | string, body?: string | object) => {
+  private createErrorResponse = (errorType: IPluginErrorType | string, body?: string | object) => {
     throw { body, errorType, success: false };
   };
+
+  private async validate(schema: Schema, value: any) {
+    if (this._validator) return this._validator(schema, value);
+
+    // reason to use cfworker json schema:
+    // https://github.com/vercel/next.js/discussions/47063#discussioncomment-5303951
+    const { Validator } = await import('@cfworker/json-schema');
+    const v = new Validator(schema);
+    const validator = v.validate(value);
+    if (!validator.valid) return { errors: validator.errors, valid: false };
+    return { valid: true };
+  }
 
   execute = async (
     payload: PluginRequestPayload,
@@ -164,11 +186,11 @@ export class Gateway {
     // ==========  6. 校验是否按照 manifest 包含了 settings 配置 ========== //
 
     if (manifest.settings) {
-      const v = new Validator(manifest.settings as any);
-      const validator = v.validate(settings || {});
-      if (!validator.valid)
+      const { valid, errors } = await this.validate(manifest.settings as any, settings || {});
+
+      if (!valid)
         return this.createErrorResponse(PluginErrorType.PluginSettingsInvalid, {
-          error: validator.errors,
+          error: errors,
           message: '[plugin] your settings is invalid with plugin manifest setting schema',
           settings,
         });
@@ -188,14 +210,13 @@ export class Gateway {
       });
 
     if (args) {
-      const v = new Validator(api.parameters as any);
       const params = JSON.parse(args!);
-      const validator = v.validate(params);
+      const { valid, errors } = await this.validate(api.parameters as any, params);
 
-      if (!validator.valid)
+      if (!valid)
         return this.createErrorResponse(PluginErrorType.PluginApiParamsError, {
           api,
-          error: validator.errors,
+          error: errors,
           message: '[plugin] args is invalid with plugin manifest api schema',
           request: params,
         });
@@ -247,7 +268,7 @@ export class Gateway {
     const { arguments: args, apiName } = payload;
 
     // @ts-ignore
-    const { default: SwaggerClient } = await import('swagger-client');
+    // const { default: SwaggerClient } = await import('swagger-client');
 
     const authorizations = {} as {
       [key: string]: any;
