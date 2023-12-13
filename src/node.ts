@@ -15,7 +15,7 @@ export const createGatewayOnNodeRuntime = (options: NodeRuntimeGatewayOptions = 
   const gateway = new Gateway({
     ...options,
     Validator: (schema, value) => {
-      const ajv = new Ajv({ validateFormats: false });
+      const ajv = new Ajv({ strict: false });
       const validate = ajv.compile(schema);
 
       const valid = validate(value);
@@ -48,10 +48,10 @@ export const createGatewayOnNodeRuntime = (options: NodeRuntimeGatewayOptions = 
 
       res.send(data);
     } catch (error) {
-      console.log(error);
+      console.error(error);
       const { errorType, body } = error as GatewayErrorResponse;
 
-      res.status(getPluginErrorStatus(errorType)).send({ body, errorType });
+      res.status(getPluginErrorStatus(errorType)).send(errorType ? { body, errorType } : error);
     }
   };
 };
