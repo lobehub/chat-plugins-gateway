@@ -2,6 +2,39 @@
 
 # Changelog
 
+## [Version 1.8.0-beta.1](https://github.com/lobehub/chat-plugins-gateway/compare/v1.7.2...v1.8.0-beta.1)
+
+<sup>Released on **2023-12-13**</sup>
+
+#### ♻ Code Refactoring
+
+- **misc**: Refactor to the Gateway Class and add tests.
+
+#### ✨ Features
+
+- **misc**: Support node runtime.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### Code refactoring
+
+- **misc**: Refactor to the Gateway Class and add tests ([e8c8cb5](https://github.com/lobehub/chat-plugins-gateway/commit/e8c8cb5))
+
+#### What's improved
+
+- **misc**: Support node runtime ([a8e2933](https://github.com/lobehub/chat-plugins-gateway/commit/a8e2933))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ### [Version 1.7.2](https://github.com/lobehub/chat-plugins-gateway/compare/v1.7.1...v1.7.2)
 
 <sup>Released on **2023-12-12**</sup>
