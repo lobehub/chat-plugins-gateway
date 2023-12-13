@@ -15,7 +15,7 @@ export const createGatewayOnNodeRuntime = (options: NodeRuntimeGatewayOptions = 
   const gateway = new Gateway({
     ...options,
     Validator: (schema, value) => {
-      const ajv = new Ajv();
+      const ajv = new Ajv({ validateFormats: false });
       const validate = ajv.compile(schema);
 
       const valid = validate(value);
@@ -43,7 +43,6 @@ export const createGatewayOnNodeRuntime = (options: NodeRuntimeGatewayOptions = 
 
     const settings = getPluginSettingsFromHeaders(req.headers as any);
 
-    console.log(requestPayload, settings);
     try {
       const { data } = await gateway.execute(requestPayload, settings);
 
