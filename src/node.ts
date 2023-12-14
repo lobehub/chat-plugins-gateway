@@ -51,7 +51,13 @@ export const createGatewayOnNodeRuntime = (options: NodeRuntimeGatewayOptions = 
       console.error(error);
       const { errorType, body } = error as GatewayErrorResponse;
 
-      res.status(getPluginErrorStatus(errorType)).send(errorType ? { body, errorType } : error);
+      res
+        .status(getPluginErrorStatus(errorType))
+        .send(
+          errorType
+            ? { body, errorType }
+            : { body: error, errorType: PluginErrorType.PluginGatewayError },
+        );
     }
   };
 };
