@@ -14,6 +14,7 @@ import {
   pluginMetaSchema,
   pluginRequestPayloadSchema,
 } from '@lobehub/chat-plugin-sdk';
+import { OPENAPI_REQUEST_BODY_KEY } from '@lobehub/chat-plugin-sdk/openapi';
 // @ts-ignore
 import SwaggerClient from 'swagger-client';
 
@@ -181,7 +182,7 @@ export class Gateway {
         message: '[plugin] plugin manifest is invalid',
       });
 
-    console.log(`[${identifier}] plugin manifest:`, manifest);
+    // console.log(`[${identifier}] plugin manifest:`, manifest);
 
     // ==========  6. 校验是否按照 manifest 包含了 settings 配置 ========== //
 
@@ -281,7 +282,7 @@ export class Gateway {
     };
 
     // 根据 settings 中的每个属性来构建 authorizations 对象
-    for (const [key, value] of Object.entries(settings)) {
+    for (const [key, value] of Object.entries(settings || {})) {
       // 处理 API Key 和 Bearer Token
       authorizations[key] = value as string;
 
@@ -316,10 +317,11 @@ export class Gateway {
       });
     }
 
-    const parameters = JSON.parse(args || '{}');
+    const requestParams = JSON.parse(args || '{}');
+    const { [OPENAPI_REQUEST_BODY_KEY]: requestBody, ...parameters } = requestParams;
 
     try {
-      const res = await client.execute({ operationId: apiName, parameters });
+      const res = await client.execute({ operationId: apiName, parameters, requestBody });
 
       return this.createSuccessResponse(res.text);
     } catch (error) {
@@ -335,6 +337,7 @@ export class Gateway {
             '[plugin] there are problem with sending openapi request, please contact with LobeHub Team',
           openapi: manifest.openapi,
           parameters,
+          requestBody,
         });
       }
 

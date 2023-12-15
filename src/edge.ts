@@ -35,6 +35,13 @@ export const createGatewayOnEdgeRuntime = (options: EdgeRuntimeGatewayOptions = 
     } catch (error) {
       const { errorType, body } = error as GatewayErrorResponse;
 
+      if (!errorType) {
+        const err = error as Error;
+        console.error(err.stack);
+        return createErrorResponse(PluginErrorType.PluginGatewayError, {
+          stack: err.stack,
+        });
+      }
       return createErrorResponse(errorType, body);
     }
   };

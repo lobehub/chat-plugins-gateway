@@ -48,7 +48,6 @@ export const createGatewayOnNodeRuntime = (options: NodeRuntimeGatewayOptions = 
 
       res.send(data);
     } catch (error) {
-      console.error(error);
       const { errorType, body } = error as GatewayErrorResponse;
 
       res
