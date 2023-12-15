@@ -2,6 +2,31 @@
 
 # Changelog
 
+### [Version 1.8.2](https://github.com/lobehub/chat-plugins-gateway/compare/v1.8.1...v1.8.2)
+
+<sup>Released on **2023-12-15**</sup>
+
+#### 🐛 Bug Fixes
+
+- **misc**: Fix openapi requestBody.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **misc**: Fix openapi requestBody ([4385080](https://github.com/lobehub/chat-plugins-gateway/commit/4385080))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ### [Version 1.8.1](https://github.com/lobehub/chat-plugins-gateway/compare/v1.8.0...v1.8.1)
 
 <sup>Released on **2023-12-14**</sup>
