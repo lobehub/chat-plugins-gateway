@@ -1,7 +1,3 @@
-import { createGatewayOnEdgeRuntime } from '../../src';
+import { createGatewayOnNodeRuntime } from '../../src';
 
-export const config = {
-  runtime: 'edge',
-};
-
-export default createGatewayOnEdgeRuntime();
+export default createGatewayOnNodeRuntime();
