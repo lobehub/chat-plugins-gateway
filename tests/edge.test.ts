@@ -4,6 +4,7 @@ import {
   PluginRequestPayload,
   createHeadersWithPluginSettings,
 } from '@lobehub/chat-plugin-sdk';
+import { LOBE_PLUGIN_SETTINGS } from '@lobehub/chat-plugin-sdk/lib/request';
 import { createGatewayOnEdgeRuntime } from '@lobehub/chat-plugins-gateway';
 // @ts-ignore
 import SwaggerClient from 'swagger-client';
@@ -105,6 +106,36 @@ describe('createGatewayOnEdgeRuntime', () => {
     const data = await response.json();
     expect(response.status).toBe(200);
     expect(data).toEqual({ success: true });
+  });
+
+  describe('with defaultPluginSettings', () => {
+    it('should execute successfully when provided with defaultPluginSettings payload', async () => {
+      (fetch as Mock).mockImplementation(async (url, { headers }) => {
+        if (url === 'https://test-market-index-url.com')
+          return {
+            json: async () => mockMarketIndex,
+            ok: true,
+          };
+
+        return new Response(JSON.stringify({ headers }), { status: 200 });
+      });
+
+      const config = { abc: '123' };
+
+      gateway = createGatewayOnEdgeRuntime({ defaultPluginSettings: { 'test-plugin': config } });
+
+      const request: Request = new Request('https://test-url.com', {
+        body: JSON.stringify(mockPluginRequestPayload),
+        method: 'POST',
+      });
+
+      const response = await gateway(request);
+      const data = await response.json();
+      expect(response.status).toBe(200);
+      expect(data).toEqual({
+        headers: { [LOBE_PLUGIN_SETTINGS]: JSON.stringify(config) },
+      });
+    });
   });
 
   describe('Error', () => {
@@ -210,7 +241,7 @@ describe('createGatewayOnEdgeRuntime', () => {
               plugins: [
                 {
                   author: 'test-plugin',
-                  createAt: '2023-08-12',
+                  createdAt: '2023-08-12',
                   homepage: 'https://github.com/lobehub/chat-plugin-real-time-weather',
                   identifier: 'test-plugin',
                   manifest: 'https://test-plugin-url.com/manifest.json',
@@ -256,7 +287,7 @@ describe('createGatewayOnEdgeRuntime', () => {
               plugins: [
                 {
                   author: 'test-plugin',
-                  createAt: '2023-08-12',
+                  createdAt: '2023-08-12',
                   homepage: 'https://github.com/lobehub/chat-plugin-real-time-weather',
                   identifier: 'test-plugin',
                   manifest: 'https://test-plugin-url.com/manifest.json',

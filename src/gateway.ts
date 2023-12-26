@@ -24,6 +24,7 @@ type IValidator = (schema: Schema, value: any) => { errors?: any; valid: boolean
 
 export interface GatewayOptions {
   Validator?: IValidator;
+  defaultPluginSettings?: Record<string, Record<string, any>>;
   /**
    * @default https://chat-plugins.lobehub.com
    */
@@ -43,11 +44,17 @@ export interface GatewayErrorResponse {
 export class Gateway {
   private pluginIndexUrl = DEFAULT_PLUGINS_INDEX_URL;
   private _validator: IValidator | undefined;
+  private defaultPluginSettings: Record<string, Record<string, any>> = {};
 
   constructor(options?: GatewayOptions) {
     if (options?.pluginsIndexUrl) {
       this.pluginIndexUrl = options.pluginsIndexUrl;
     }
+
+    if (options?.defaultPluginSettings) {
+      this.defaultPluginSettings = options.defaultPluginSettings;
+    }
+
     if (options?.Validator) {
       this._validator = options.Validator;
     }
@@ -184,10 +191,12 @@ export class Gateway {
 
     // console.log(`[${identifier}] plugin manifest:`, manifest);
 
+    const defaultSettings = this.defaultPluginSettings[identifier] || {};
+    const finalSettings = { ...defaultSettings, ...settings };
     // ==========  6. 校验是否按照 manifest 包含了 settings 配置 ========== //
 
     if (manifest.settings) {
-      const { valid, errors } = await this.validate(manifest.settings as any, settings || {});
+      const { valid, errors } = await this.validate(manifest.settings as any, finalSettings);
 
       if (!valid)
         return this.createErrorResponse(PluginErrorType.PluginSettingsInvalid, {
@@ -225,10 +234,10 @@ export class Gateway {
 
     // ==========  8. 兼容 OpenAPI 请求模式 ========== //
     if (manifest.openapi) {
-      return await this.callOpenAPI(payload, settings, manifest);
+      return await this.callOpenAPI(payload, finalSettings, manifest);
     }
 
-    return await this.callApi(api, args, settings);
+    return await this.callApi(api, args, finalSettings);
   };
 
   private async callApi(
@@ -263,7 +272,7 @@ export class Gateway {
 
   private async callOpenAPI(
     payload: PluginRequestPayload,
-    settings: any,
+    settings: any = {},
     manifest: LobeChatPluginManifest,
   ): Promise<GatewaySuccessResponse> {
     const { arguments: args, apiName } = payload;
@@ -282,7 +291,7 @@ export class Gateway {
     };
 
     // 根据 settings 中的每个属性来构建 authorizations 对象
-    for (const [key, value] of Object.entries(settings || {})) {
+    for (const [key, value] of Object.entries(settings)) {
       // 处理 API Key 和 Bearer Token
       authorizations[key] = value as string;
 

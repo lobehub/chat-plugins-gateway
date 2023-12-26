@@ -200,7 +200,7 @@ exports[`createGatewayOnEdgeRuntime > Error > should return PluginMetaInvalid er
           "expected": "string",
           "message": "Required",
           "path": [
-            "createAt",
+            "createdAt",
           ],
           "received": "undefined",
         },
