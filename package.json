@@ -12,8 +12,8 @@
   ],
   "scripts": {
     "build": "father build",
+    "build:watch": "father dev",
     "ci": "npm run lint && npm run type-check && npm run doctor",
-    "devs": "father dev",
     "doctor": "father doctor",
     "lint": "eslint \"{src,api,docs}/**/*.{js,jsx,ts,tsx}\" --fix",
     "lint:md": "remark . --quiet --frail --output",
