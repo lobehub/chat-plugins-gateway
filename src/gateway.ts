@@ -253,7 +253,9 @@ export class Gateway {
 
     const response = await fetch(api.url, {
       body: args,
-      headers: createHeadersWithPluginSettings(settings),
+      headers: createHeadersWithPluginSettings(settings, {
+        'Content-Type': 'application/json',
+      }),
       method: 'POST',
     });
 
